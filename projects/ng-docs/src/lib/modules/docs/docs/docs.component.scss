@@ -1,0 +1,57 @@
+@import "../../../variables.scss";
+
+::-webkit-scrollbar {
+  width: 8px;
+  color: red($color: #000000);
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+mat-sidenav-content {
+  background-color: white;
+  padding: 25px;
+  height: calc(100vh - 114px) !important;
+}
+
+.sidenav-container {
+  position: relative;
+  height: calc(100%-64px);
+  background: #eee;
+  mat-sidenav {
+    width: 200px;
+  }
+}
+
+.item-navigation {
+  font-size: 16px;
+  box-sizing: border-box;
+  color: $text-color;
+  cursor: pointer;
+  align-items: center;
+  justify-content: space-between;
+  overflow-wrap: break-word;
+  padding: 8px;
+  text-decoration: none;
+  text-align: left;
+  width: 100%;
+  word-wrap: break-word;
+  text-transform: uppercase;
+}
+
+.navigationMenu {
+  a {
+    color: $text-color;
+    text-decoration: none;
+    text-transform: initial;
+    display: flex;
+    font-size: 13px;
+    padding-left: 20px;
+  }
+}

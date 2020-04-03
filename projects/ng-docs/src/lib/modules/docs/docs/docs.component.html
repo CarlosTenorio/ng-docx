@@ -1,0 +1,13 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav mode="side" opened>
+        <div class="item-navigation">
+            <div (click)="loadMarkdown('frontend')">Frontend</div>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <markdown [src]="markdown" lineNumbers></markdown>
+    </mat-sidenav-content>
+    <mat-sidenav opened mode="side" position="end">
+        <div [ngClass]="classNavigationMenu"></div>
+    </mat-sidenav>
+</mat-sidenav-container>
