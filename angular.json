@@ -13,8 +13,7 @@
                     "builder": "@angular-devkit/build-ng-packagr:build",
                     "options": {
                         "tsConfig": "projects/ng-docs/tsconfig.lib.json",
-                        "project": "projects/ng-docs/ng-package.json",
-                        "preserveSymlinks": true
+                        "project": "projects/ng-docs/ng-package.json"
                     },
                     "configurations": {
                         "production": {
@@ -60,7 +59,11 @@
                         "tsConfig": "projects/ng-docs-sandbox/tsconfig.app.json",
                         "aot": true,
                         "assets": ["projects/ng-docs-sandbox/src/favicon.ico", "projects/ng-docs-sandbox/src/assets"],
-                        "styles": ["projects/ng-docs-sandbox/src/styles.scss"],
+                        "styles": [
+                            "projects/ng-docs-sandbox/src/styles.scss",
+                            "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+                            "node_modules/ng-docs/src/lib/assets/styles/ng-docs.scss"
+                        ],
                         "scripts": []
                     },
                     "configurations": {
