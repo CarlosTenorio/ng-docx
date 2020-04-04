@@ -53,5 +53,9 @@ mat-sidenav-content {
     display: flex;
     font-size: 13px;
     padding-left: 20px;
+
+    &.navigation-item-selected {
+      font-weight: 600;
+    }
   }
 }

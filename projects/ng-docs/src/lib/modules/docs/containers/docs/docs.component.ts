@@ -7,7 +7,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
     encapsulation: ViewEncapsulation.None
 })
 export class NgDocsComponent implements OnInit {
-    markdown = `assets/docs/frontend.md`;
+    markdown = `assets/docs/getting-started.md`;
     classNavigationMenu = 'navigationMenu';
 
     constructor() {}
@@ -43,13 +43,42 @@ export class NgDocsComponent implements OnInit {
     }
 
     createNavigationMap(text: string, id: number, subItems: any[]) {
-        console.log(subItems);
         const navigationMenu = document.getElementsByClassName(this.classNavigationMenu)[0];
         const aItem = document.createElement('a');
         const aText = document.createTextNode(text);
         aItem.appendChild(aText);
         aItem.title = text;
+        aItem.id = `navItem${id}`;
         aItem.href = `docs#${id}`;
         navigationMenu.appendChild(aItem);
+    }
+
+    onScroll(event: Event) {
+        this.highlightHeader();
+    }
+
+    highlightHeader() {
+        const sections = document.getElementsByTagName('section');
+        const arrSections = [...(sections as any)];
+
+        arrSections.some((section: HTMLHeadingElement, index: number) => {
+            const positionSection = section.getBoundingClientRect();
+            if (positionSection.top >= 0 && positionSection.bottom <= window.innerHeight) {
+                this.hightlightItem(index);
+                return true;
+            }
+        });
+    }
+
+    hightlightItem(index: number) {
+        const className = 'navigation-item-selected';
+        const currentSelected = document.getElementsByClassName(`navigation-item-selected`)[0];
+        const item = document.getElementById(`navItem${index}`);
+        if (currentSelected !== item) {
+            if (currentSelected) {
+                currentSelected.classList.remove(className);
+            }
+            item.classList.add(className);
+        }
     }
 }

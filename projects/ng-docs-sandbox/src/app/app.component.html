@@ -1,1 +1,13 @@
+<mat-toolbar class="toolbar" [class.toolbar-home]="isHome">
+    <p [routerLink]="['/']" class="title">NG Docs</p>
+    <ul class="navigation-menu">
+        <li class="ng-star-inserted selected">
+            <a class="nav-link" href="docs" title="Docs."><span class="nav-link-inner">Docs</span></a>
+        </li>
+        <li class="ng-star-inserted">
+            <a class="nav-link" href="resources" title="Resources."><span class="nav-link-inner">Resources</span></a>
+        </li>
+    </ul>
+</mat-toolbar>
+
 <router-outlet></router-outlet>

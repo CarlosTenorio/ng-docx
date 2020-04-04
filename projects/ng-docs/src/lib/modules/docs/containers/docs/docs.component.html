@@ -1,10 +1,10 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav mode="side" opened>
         <div class="item-navigation">
-            <div (click)="loadMarkdown('getting-satrted')">Getting Started</div>
+            <div (click)="loadMarkdown('getting-started')">Getting Started</div>
         </div>
     </mat-sidenav>
-    <mat-sidenav-content>
+    <mat-sidenav-content (scroll)="onScroll($event)">
         <markdown [src]="markdown" lineNumbers></markdown>
     </mat-sidenav-content>
     <mat-sidenav opened mode="side" position="end">
