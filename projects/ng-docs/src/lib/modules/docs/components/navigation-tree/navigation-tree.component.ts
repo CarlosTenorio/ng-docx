@@ -20,22 +20,25 @@ export class NavigationTreeComponent implements OnInit {
     loadSections() {
         const elementsH2 = document.getElementsByTagName('h2');
         const arrElementsH2 = [...(elementsH2 as any)];
+        let lastIndex = -1;
 
         arrElementsH2.forEach((elementH2: HTMLHeadingElement, index: number) => {
+            index = lastIndex + 1;
             const arrElementsH3 = this.utils.nextUntil(elementH2, 'h2', 'h3');
             this.loadSubSections(arrElementsH3, index);
-            this.wrapElement(elementH2, index.toString());
+            this.wrapElementWithSection(elementH2, index.toString());
             this.createTreeItem(elementH2.textContent, index, arrElementsH3);
+            lastIndex = index + arrElementsH3.length;
         });
     }
 
     loadSubSections(arrElementsH3: any[], index: number) {
         arrElementsH3.forEach((elementH3: HTMLHeadingElement, subIndex: number) => {
-            this.wrapElement(elementH3, `${index}.${subIndex}`);
+            this.wrapElementWithSection(elementH3, (index + subIndex + 1).toString());
         });
     }
 
-    wrapElement(element: any, id: string) {
+    wrapElementWithSection(element: any, id: string) {
         const parent = element.parentNode;
         const wrapperSection = document.createElement('section');
         wrapperSection.id = id;
@@ -43,27 +46,28 @@ export class NavigationTreeComponent implements OnInit {
         wrapperSection.appendChild(element);
     }
 
-    createTreeItem(text: string, id: number, subItems: any[]) {
+    createTreeItem(text: string, index: number, subItems: any[]) {
         const navigationMenu = document.getElementsByClassName(this.classNavigationMenu)[0];
         const aItem = document.createElement('a');
         const aText = document.createTextNode(text);
         aItem.appendChild(aText);
         aItem.title = text;
-        aItem.id = `navItem${id}`;
-        aItem.href = `docs#${id}`;
+        aItem.id = `navItem${index}`;
+        aItem.href = `docs#${index}`;
         navigationMenu.appendChild(aItem);
         subItems.forEach((subItem: Element, subIndex: number) => {
-            this.createTreeSubItem(aItem, subItem.textContent, subIndex);
+            this.createTreeSubItem(navigationMenu, subItem.textContent, index + subIndex + 1);
         });
     }
 
-    createTreeSubItem(parent: HTMLAnchorElement, text: string, id: number) {
-        const aItem = document.createElement('a');
+    createTreeSubItem(parent: Element, text: string, id: number) {
+        const aSubItem = document.createElement('a');
         const aText = document.createTextNode(text);
-        aItem.appendChild(aText);
-        aItem.title = text;
-        aItem.id = `navSubItem${id}`;
-        aItem.href = `docs#${id}`;
-        parent.appendChild(aItem);
+        aSubItem.appendChild(aText);
+        aSubItem.title = text;
+        aSubItem.id = `navItem${id}`;
+        aSubItem.href = `docs#${id}`;
+        aSubItem.classList.add('sub-item-navigation');
+        parent.insertAdjacentElement('beforeend', aSubItem);
     }
 }

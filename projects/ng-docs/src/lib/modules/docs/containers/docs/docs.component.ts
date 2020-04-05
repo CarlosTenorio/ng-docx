@@ -40,7 +40,9 @@ export class NgDocsComponent {
             if (currentSelected) {
                 currentSelected.classList.remove(className);
             }
-            item.classList.add(className);
+            if (item) {
+                item.classList.add(className);
+            }
         }
     }
 }
