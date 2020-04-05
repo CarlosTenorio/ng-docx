@@ -11,7 +11,18 @@
             content: "";
             left: 20px;
             top: 0;
-            bottom: 0;
+            bottom: -4px;
+        }
+
+        &:first-child::after {
+            content: "";
+            display: block;
+            height: 1px;
+            width: 40%;
+            margin: 7px 0 4px;
+            background: #dbdbdb;
+            clear: both;
+            margin-left: 37px;
         }
     }
     a {
