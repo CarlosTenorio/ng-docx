@@ -3,66 +3,66 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "ng-docs": {
+        "ng-docx": {
             "projectType": "library",
-            "root": "projects/ng-docs",
-            "sourceRoot": "projects/ng-docs/src",
+            "root": "projects/ng-docx",
+            "sourceRoot": "projects/ng-docx/src",
             "prefix": "lib",
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
                     "options": {
-                        "tsConfig": "projects/ng-docs/tsconfig.lib.json",
-                        "project": "projects/ng-docs/ng-package.json"
+                        "tsConfig": "projects/ng-docx/tsconfig.lib.json",
+                        "project": "projects/ng-docx/ng-package.json"
                     },
                     "configurations": {
                         "production": {
-                            "tsConfig": "projects/ng-docs/tsconfig.lib.prod.json"
+                            "tsConfig": "projects/ng-docx/tsconfig.lib.prod.json"
                         }
                     }
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
-                        "main": "projects/ng-docs/src/test.ts",
-                        "tsConfig": "projects/ng-docs/tsconfig.spec.json",
-                        "karmaConfig": "projects/ng-docs/karma.conf.js"
+                        "main": "projects/ng-docx/src/test.ts",
+                        "tsConfig": "projects/ng-docx/tsconfig.spec.json",
+                        "karmaConfig": "projects/ng-docx/karma.conf.js"
                     }
                 },
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
-                        "tsConfig": ["projects/ng-docs/tsconfig.lib.json", "projects/ng-docs/tsconfig.spec.json"],
+                        "tsConfig": ["projects/ng-docx/tsconfig.lib.json", "projects/ng-docx/tsconfig.spec.json"],
                         "exclude": ["**/node_modules/**"]
                     }
                 }
             }
         },
-        "ng-docs-sandbox": {
+        "ng-docx-sandbox": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
                     "style": "scss"
                 }
             },
-            "root": "projects/ng-docs-sandbox",
-            "sourceRoot": "projects/ng-docs-sandbox/src",
+            "root": "projects/ng-docx-sandbox",
+            "sourceRoot": "projects/ng-docx-sandbox/src",
             "prefix": "app",
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/ng-docs-sandbox",
-                        "index": "projects/ng-docs-sandbox/src/index.html",
-                        "main": "projects/ng-docs-sandbox/src/main.ts",
-                        "polyfills": "projects/ng-docs-sandbox/src/polyfills.ts",
-                        "tsConfig": "projects/ng-docs-sandbox/tsconfig.app.json",
+                        "outputPath": "dist/ng-docx-sandbox",
+                        "index": "projects/ng-docx-sandbox/src/index.html",
+                        "main": "projects/ng-docx-sandbox/src/main.ts",
+                        "polyfills": "projects/ng-docx-sandbox/src/polyfills.ts",
+                        "tsConfig": "projects/ng-docx-sandbox/tsconfig.app.json",
                         "aot": true,
-                        "assets": ["projects/ng-docs-sandbox/src/favicon.ico", "projects/ng-docs-sandbox/src/assets"],
+                        "assets": ["projects/ng-docx-sandbox/src/favicon.ico", "projects/ng-docx-sandbox/src/assets"],
                         "styles": [
-                            "projects/ng-docs-sandbox/src/styles.scss",
+                            "projects/ng-docx-sandbox/src/styles.scss",
                             "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-                            "node_modules/ng-docs/src/lib/assets/styles/ng-docs.scss"
+                            "node_modules/ng-docx/src/lib/assets/styles/ng-docx.scss"
                         ],
                         "scripts": []
                     },
@@ -70,8 +70,8 @@
                         "production": {
                             "fileReplacements": [
                                 {
-                                    "replace": "projects/ng-docs-sandbox/src/environments/environment.ts",
-                                    "with": "projects/ng-docs-sandbox/src/environments/environment.prod.ts"
+                                    "replace": "projects/ng-docx-sandbox/src/environments/environment.ts",
+                                    "with": "projects/ng-docx-sandbox/src/environments/environment.prod.ts"
                                 }
                             ],
                             "optimization": true,
@@ -100,29 +100,29 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "ng-docs-sandbox:build"
+                        "browserTarget": "ng-docx-sandbox:build"
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "ng-docs-sandbox:build:production"
+                            "browserTarget": "ng-docx-sandbox:build:production"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "ng-docs-sandbox:build"
+                        "browserTarget": "ng-docx-sandbox:build"
                     }
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
-                        "main": "projects/ng-docs-sandbox/src/test.ts",
-                        "polyfills": "projects/ng-docs-sandbox/src/polyfills.ts",
-                        "tsConfig": "projects/ng-docs-sandbox/tsconfig.spec.json",
-                        "karmaConfig": "projects/ng-docs-sandbox/karma.conf.js",
-                        "assets": ["projects/ng-docs-sandbox/src/favicon.ico", "projects/ng-docs-sandbox/src/assets"],
-                        "styles": ["projects/ng-docs-sandbox/src/styles.scss"],
+                        "main": "projects/ng-docx-sandbox/src/test.ts",
+                        "polyfills": "projects/ng-docx-sandbox/src/polyfills.ts",
+                        "tsConfig": "projects/ng-docx-sandbox/tsconfig.spec.json",
+                        "karmaConfig": "projects/ng-docx-sandbox/karma.conf.js",
+                        "assets": ["projects/ng-docx-sandbox/src/favicon.ico", "projects/ng-docx-sandbox/src/assets"],
+                        "styles": ["projects/ng-docx-sandbox/src/styles.scss"],
                         "scripts": []
                     }
                 },
@@ -130,9 +130,9 @@
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
                         "tsConfig": [
-                            "projects/ng-docs-sandbox/tsconfig.app.json",
-                            "projects/ng-docs-sandbox/tsconfig.spec.json",
-                            "projects/ng-docs-sandbox/e2e/tsconfig.json"
+                            "projects/ng-docx-sandbox/tsconfig.app.json",
+                            "projects/ng-docx-sandbox/tsconfig.spec.json",
+                            "projects/ng-docx-sandbox/e2e/tsconfig.json"
                         ],
                         "exclude": ["**/node_modules/**"]
                     }
@@ -140,12 +140,12 @@
                 "e2e": {
                     "builder": "@angular-devkit/build-angular:protractor",
                     "options": {
-                        "protractorConfig": "projects/ng-docs-sandbox/e2e/protractor.conf.js",
-                        "devServerTarget": "ng-docs-sandbox:serve"
+                        "protractorConfig": "projects/ng-docx-sandbox/e2e/protractor.conf.js",
+                        "devServerTarget": "ng-docx-sandbox:serve"
                     },
                     "configurations": {
                         "production": {
-                            "devServerTarget": "ng-docs-sandbox:serve:production"
+                            "devServerTarget": "ng-docx-sandbox:serve:production"
                         }
                     }
                 }
@@ -155,5 +155,5 @@
     "cli": {
         "analytics": false
     },
-    "defaultProject": "ng-docs"
+    "defaultProject": "ng-docx"
 }

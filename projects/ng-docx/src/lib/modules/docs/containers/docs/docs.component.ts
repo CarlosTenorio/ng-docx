@@ -6,7 +6,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
     styleUrls: ['./docs.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class NgDocsComponent {
+export class NgDocxComponent {
     markdown = `assets/docs/getting-started.md`;
 
     constructor() {}

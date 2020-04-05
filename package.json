@@ -1,17 +1,17 @@
 {
-    "name": "ng-docs",
+    "name": "ng-docx",
     "version": "0.0.0",
     "scripts": {
         "ng": "ng",
-        "start": "ng serve ng-docs-sandbox",
-        "build:lib": "ng build ng-docs",
-        "build:lib-watch": "ng build ng-docs --watch",
-        "build:sandbox": "ng build ng-docs-sandbox",
+        "start": "ng serve ng-docx-sandbox",
+        "build:lib": "ng build ng-docx",
+        "build:lib-watch": "ng build ng-docx --watch",
+        "build:sandbox": "ng build ng-docx-sandbox",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e"
     },
-    "private": true,
+    "private": false,
     "dependencies": {
         "@angular/animations": "~9.0.6",
         "@angular/cdk": "^9.2.0",
@@ -23,7 +23,7 @@
         "@angular/platform-browser": "~9.0.6",
         "@angular/platform-browser-dynamic": "~9.0.6",
         "@angular/router": "~9.0.6",
-        "ng-docs": "file:projects/ng-docs",
+        "ng-docx": "file:projects/ng-docx",
         "ngx-markdown": "^9.0.0",
         "rxjs": "~6.5.4",
         "tslib": "^1.10.0",

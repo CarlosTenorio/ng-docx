@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NgDocsComponent } from './docs.component';
+import { NgDocxComponent } from './docs.component';
 
-describe('NgDocsComponent', () => {
-    let component: NgDocsComponent;
-    let fixture: ComponentFixture<NgDocsComponent>;
+describe('NgDocxComponent', () => {
+    let component: NgDocxComponent;
+    let fixture: ComponentFixture<NgDocxComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [NgDocsComponent]
+            declarations: [NgDocxComponent]
         }).compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(NgDocsComponent);
+        fixture = TestBed.createComponent(NgDocxComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

@@ -17,10 +17,10 @@
     ],
     "paths": {
       "ng-docs": [
-        "dist/ng-docs"
+        "dist/ng-docx"
       ],
       "ng-docs/*": [
-        "dist/ng-docs/*"
+        "dist/ng-docx/*"
       ]
     }
   },
