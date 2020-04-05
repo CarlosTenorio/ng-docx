@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { UtilsService } from '../../services/utils.service';
 
 @Component({
@@ -7,6 +7,8 @@ import { UtilsService } from '../../services/utils.service';
     styleUrls: ['./navigation-tree.component.scss']
 })
 export class NavigationTreeComponent implements OnInit {
+    @Output() sectionsLoaded = new EventEmitter<boolean>();
+
     classNavigationMenu = 'navigationMenu';
 
     constructor(private utils: UtilsService) {}
@@ -14,25 +16,37 @@ export class NavigationTreeComponent implements OnInit {
     ngOnInit() {
         setTimeout(() => {
             this.loadSections();
+            this.sectionsLoaded.emit(true);
         });
     }
 
     loadSections() {
+        this.createSectionTitle();
+        this.createSectionSubTitles();
+    }
+
+    createSectionTitle() {
+        const titleH1 = document.getElementsByTagName('h1')[0];
+        this.wrapElementWithSection(titleH1, '0');
+        this.createTreeItem(titleH1.textContent, 0);
+    }
+
+    createSectionSubTitles() {
         const elementsH2 = document.getElementsByTagName('h2');
         const arrElementsH2 = [...(elementsH2 as any)];
-        let lastIndex = -1;
+        let lastIndex = 0;
 
         arrElementsH2.forEach((elementH2: HTMLHeadingElement, index: number) => {
             index = lastIndex + 1;
             const arrElementsH3 = this.utils.nextUntil(elementH2, 'h2', 'h3');
-            this.loadSubSections(arrElementsH3, index);
+            this.loadSectionsH3(arrElementsH3, index);
             this.wrapElementWithSection(elementH2, index.toString());
             this.createTreeItem(elementH2.textContent, index, arrElementsH3);
             lastIndex = index + arrElementsH3.length;
         });
     }
 
-    loadSubSections(arrElementsH3: any[], index: number) {
+    loadSectionsH3(arrElementsH3: any[], index: number) {
         arrElementsH3.forEach((elementH3: HTMLHeadingElement, subIndex: number) => {
             this.wrapElementWithSection(elementH3, (index + subIndex + 1).toString());
         });
@@ -46,7 +60,7 @@ export class NavigationTreeComponent implements OnInit {
         wrapperSection.appendChild(element);
     }
 
-    createTreeItem(text: string, index: number, subItems: any[]) {
+    createTreeItem(text: string, index: number, subItems: any[] = []) {
         const navigationMenu = document.getElementsByClassName(this.classNavigationMenu)[0];
         const aItem = document.createElement('a');
         const aText = document.createTextNode(text);

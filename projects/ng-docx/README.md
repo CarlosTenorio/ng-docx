@@ -4,20 +4,20 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Code scaffolding
 
-Run `ng generate component component-name --project ng-docs` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ng-docs`.
-> Note: Don't forget to add `--project ng-docs` or else it will be added to the default project in your `angular.json` file. 
+Run `ng generate component component-name --project ng-docx` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ng-docx`.
+> Note: Don't forget to add `--project ng-docx` or else it will be added to the default project in your `angular.json` file. 
 
 ## Build
 
-Run `ng build ng-docs` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `ng build ng-docx` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ## Publishing
 
-After building your library with `ng build ng-docs`, go to the dist folder `cd dist/ng-docs` and run `npm publish`.
+After building your library with `ng build ng-docx`, go to the dist folder `cd dist/ng-docx` and run `npm publish`.
 
 ## Running unit tests
 
-Run `ng test ng-docs` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test ng-docx` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ## Further help
 

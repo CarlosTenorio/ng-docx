@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-    selector: 'ng-docs',
+    selector: 'ng-docx',
     templateUrl: './docs.component.html',
     styleUrls: ['./docs.component.scss'],
     encapsulation: ViewEncapsulation.None
@@ -15,7 +15,7 @@ export class NgDocxComponent {
         this.markdown = `assets/docs/${context}.md`;
     }
 
-    onScroll(event: Event) {
+    onScroll() {
         this.highlightHeader();
     }
 

@@ -16,10 +16,10 @@
       "dom"
     ],
     "paths": {
-      "ng-docs": [
+      "ng-docx": [
         "dist/ng-docx"
       ],
-      "ng-docs/*": [
+      "ng-docx/*": [
         "dist/ng-docx/*"
       ]
     }
