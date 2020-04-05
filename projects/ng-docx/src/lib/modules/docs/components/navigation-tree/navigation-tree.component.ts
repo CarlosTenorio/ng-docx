@@ -1,10 +1,11 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
 import { UtilsService } from '../../services/utils.service';
 
 @Component({
     selector: 'lib-navigation-tree',
     templateUrl: './navigation-tree.component.html',
-    styleUrls: ['./navigation-tree.component.scss']
+    styleUrls: ['./navigation-tree.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class NavigationTreeComponent implements OnInit {
     @Output() sectionsLoaded = new EventEmitter<boolean>();
@@ -62,19 +63,22 @@ export class NavigationTreeComponent implements OnInit {
 
     createTreeItem(text: string, index: number, subItems: any[] = []) {
         const navigationMenu = document.getElementsByClassName(this.classNavigationMenu)[0];
+        const div = document.createElement('div');
         const aItem = document.createElement('a');
         const aText = document.createTextNode(text);
         aItem.appendChild(aText);
         aItem.title = text;
         aItem.id = `navItem${index}`;
         aItem.href = `docs#${index}`;
-        navigationMenu.appendChild(aItem);
+        div.appendChild(aItem);
+        navigationMenu.appendChild(div);
         subItems.forEach((subItem: Element, subIndex: number) => {
             this.createTreeSubItem(navigationMenu, subItem.textContent, index + subIndex + 1);
         });
     }
 
     createTreeSubItem(parent: Element, text: string, id: number) {
+        const div = document.createElement('div');
         const aSubItem = document.createElement('a');
         const aText = document.createTextNode(text);
         aSubItem.appendChild(aText);
@@ -82,6 +86,7 @@ export class NavigationTreeComponent implements OnInit {
         aSubItem.id = `navItem${id}`;
         aSubItem.href = `docs#${id}`;
         aSubItem.classList.add('sub-item-navigation');
-        parent.insertAdjacentElement('beforeend', aSubItem);
+        div.appendChild(aSubItem);
+        parent.insertAdjacentElement('beforeend', div);
     }
 }

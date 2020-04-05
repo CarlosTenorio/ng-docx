@@ -1,7 +1,7 @@
 @import "../../../../assets/styles/variables.scss";
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 5px;
   color: red($color: #000000);
 }
 ::-webkit-scrollbar-track {
@@ -26,6 +26,9 @@ mat-sidenav-content {
   background: #eee;
   mat-sidenav {
     width: 200px;
+    &.sidenav-right {
+      width: 270px;
+    }
   }
 }
 
@@ -43,23 +46,4 @@ mat-sidenav-content {
   width: 100%;
   word-wrap: break-word;
   text-transform: uppercase;
-}
-
-.navigationMenu {
-  a {
-    color: $text-color;
-    text-decoration: none;
-    text-transform: initial;
-    display: block;
-    font-size: 13px;
-    padding-left: 20px;
-
-    &.navigation-item-selected {
-      font-weight: 600;
-    }
-
-    &.sub-item-navigation {
-      margin-left: 10px;
-    }
-  }
 }
