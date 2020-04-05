@@ -1,4 +1,4 @@
-# ng-docs
+# ng-docx
 Angular Library to generate documentation based on .md files automatically
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6.
