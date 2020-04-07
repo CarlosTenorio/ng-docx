@@ -36,7 +36,8 @@
         padding-top: 3px;
 
         &.navigation-item-selected {
-            font-weight: 600;
+            font-weight: 500;
+            color: $primary-color;
 
             &::after {
                 content: "";

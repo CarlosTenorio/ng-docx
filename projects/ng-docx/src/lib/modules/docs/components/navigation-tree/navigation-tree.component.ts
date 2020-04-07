@@ -1,5 +1,7 @@
 import { Component, OnInit, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
 import { UtilsService } from '../../services/utils.service';
+import { DocsService } from '../../services/docs/docs.service';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'lib-navigation-tree',
@@ -11,14 +13,32 @@ export class NavigationTreeComponent implements OnInit {
     @Output() sectionsLoaded = new EventEmitter<boolean>();
 
     classNavigationMenu = 'navigationMenu';
+    markdownChange$: Observable<boolean>;
 
-    constructor(private utils: UtilsService) {}
+    constructor(private utils: UtilsService, private docsService: DocsService) {}
 
     ngOnInit() {
+        this.loadObservables();
         setTimeout(() => {
             this.loadSections();
             this.sectionsLoaded.emit(true);
         });
+        this.markdownChange$.subscribe((isChanged: boolean) => {
+            if (isChanged) {
+                this.cleanTree();
+                this.loadSections();
+                this.sectionsLoaded.emit(true);
+            }
+        });
+    }
+
+    loadObservables() {
+        this.markdownChange$ = this.docsService.markdownChange$;
+    }
+
+    cleanTree() {
+        const navigationMenu = document.getElementsByClassName(this.classNavigationMenu)[0];
+        navigationMenu.innerHTML = '';
     }
 
     loadSections() {

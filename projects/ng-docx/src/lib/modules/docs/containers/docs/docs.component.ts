@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { DocsService } from './../../services/docs/docs.service';
 
 @Component({
     selector: 'ng-docx',
@@ -9,10 +10,14 @@ import { Component, ViewEncapsulation } from '@angular/core';
 export class NgDocxComponent {
     markdown = `assets/docs/getting-started.md`;
 
-    constructor() {}
+    constructor(private docsService: DocsService) {}
 
-    loadMarkdown(context: string) {
-        this.markdown = `assets/docs/${context}.md`;
+    loadMarkdown(markdownName: string) {
+        this.markdown = `assets/docs/${markdownName}.md`;
+    }
+
+    notifyMarkdownChanges() {
+        this.docsService.notifyMarkdownChanges();
     }
 
     onScroll() {
