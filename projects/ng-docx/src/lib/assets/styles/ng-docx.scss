@@ -4,9 +4,21 @@ h3,
 h4,
 h5,
 h6 {
-    font-weight: 600 !important;
+    font-weight: 500 !important;
     margin: 1.8em 0 !important;
     line-height: 1.33 !important;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+h2 {
+    font-size: 22px;
+}
+
+h3 {
+    font-size: 20px;
 }
 
 h1:first-child {
@@ -29,9 +41,10 @@ p,
 pre,
 ul,
 li {
-    font-size: 16px;
+    font-size: 14px;
     margin: 1.2em 0 !important;
     line-height: 1.67 !important;
+    letter-spacing: 0.03rem !important;
 }
 
 blockquote {

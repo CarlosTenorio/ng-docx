@@ -5,6 +5,7 @@
     position: relative;
     div {
         position: relative;
+        padding: 3px;
         &::before {
             position: absolute;
             border-left: 1px solid #dbdbdb;
@@ -43,7 +44,7 @@
                 content: "";
                 border-radius: 50%;
                 left: 18px;
-                top: 8px;
+                top: 11px;
                 background: $primary-color;
                 position: absolute;
                 width: 6px;

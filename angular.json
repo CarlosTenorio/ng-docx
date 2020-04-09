@@ -60,9 +60,8 @@
                         "aot": true,
                         "assets": ["projects/ng-docx-sandbox/src/favicon.ico", "projects/ng-docx-sandbox/src/assets"],
                         "styles": [
-                            "projects/ng-docx-sandbox/src/styles.scss",
                             "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-                            "node_modules/ng-docx/src/lib/assets/styles/ng-docx.scss"
+                            "projects/ng-docx-sandbox/src/styles.scss"
                         ],
                         "scripts": []
                     },

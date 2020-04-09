@@ -8,17 +8,21 @@ import { DocsService } from './../../services/docs/docs.service';
     encapsulation: ViewEncapsulation.None
 })
 export class NgDocxComponent {
+    markdownBefore: string = null;
     markdown = `assets/docs/getting-started.md`;
 
     constructor(private docsService: DocsService) {}
 
     loadMarkdown(markdownName: string) {
+        this.markdownBefore = this.markdown;
         this.markdown = `assets/docs/${markdownName}.md`;
     }
 
     notifyMarkdownChanges() {
-        this.docsService.notifyMarkdownChanges();
-        document.querySelector('.mat-sidenav-content').scrollTop = 0;
+        if (this.markdownBefore && this.markdownBefore !== this.markdown) {
+            this.docsService.notifyMarkdownChanges();
+            document.querySelector('.mat-sidenav-content').scrollTop = 0;
+        }
     }
 
     onScroll() {
