@@ -1,5 +1,6 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, Inject } from '@angular/core';
 import { DocsService } from './../../services/docs/docs.service';
+import { ConfigInterface } from '../../models';
 
 @Component({
     selector: 'ng-docx',
@@ -9,9 +10,11 @@ import { DocsService } from './../../services/docs/docs.service';
 })
 export class NgDocxComponent {
     markdownBefore: string = null;
-    markdown = `assets/docs/getting-started.md`;
+    markdown: string;
 
-    constructor(private docsService: DocsService) {}
+    constructor(@Inject('config') private config: ConfigInterface, private docsService: DocsService) {
+        this.markdown = `assets/docs/${config.files[0]}.md`;
+    }
 
     loadMarkdown(markdownName: string) {
         this.markdownBefore = this.markdown;

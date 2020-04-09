@@ -14,4 +14,12 @@
     width: 100%;
     word-wrap: break-word;
     text-transform: uppercase;
+
+    :first-child {
+        margin-top: 20px;
+    }
+
+    div {
+        margin-bottom: 10px;
+    }
 }

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NgDocxModule, NgDocxComponent } from 'projects/ng-docx/src/public-api';
 
-const fileNames = ['getting-started', 'hi'];
+const fileNames = ['getting started', "what's next"];
 
 const routes: Routes = [
     {

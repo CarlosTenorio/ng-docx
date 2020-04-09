@@ -27,7 +27,14 @@ mat-sidenav-content {
   mat-sidenav {
     width: 200px;
     &.sidenav-right {
-      width: 270px;
+      width: 240px;
     }
+  }
+  .sidenav-left {
+    box-shadow: 6px 0 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .mat-drawer-side.mat-drawer-end {
+    border-left: none;
   }
 }
