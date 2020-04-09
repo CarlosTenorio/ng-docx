@@ -18,6 +18,7 @@ export class NgDocxComponent {
 
     notifyMarkdownChanges() {
         this.docsService.notifyMarkdownChanges();
+        document.querySelector('.mat-sidenav-content').scrollTop = 0;
     }
 
     onScroll() {
