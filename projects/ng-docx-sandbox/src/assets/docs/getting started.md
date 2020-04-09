@@ -126,3 +126,17 @@ const routes: Routes = [
 })
 export class WrapperDocsModule {}
 ```
+
+## What type of extensions are supported?
+
+- Markdown (.md)
+
+## Where are my docs located?
+
+The files must be placed in the **assets folder** **inside a subfolder** called **docs**, for example:
+
+- assets
+  - docs
+    - getting started.md
+    - what's next.md
+
