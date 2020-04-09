@@ -1,28 +1,142 @@
-# ng-docx
-Angular Library to generate documentation based on .md files automatically
+# NG-DOCX
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6.
+Welcome to NG-DOCX! 
 
-## Development server
+## What is Ng-docx?
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Ng-docx is a library that automatically generates a documentation page to easily and beautifully view your markdowns
 
-## Code scaffolding
+## Dependencies
+Before install the library, install the necessary dependencies to function properly
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- [@angular/material](https://www.npmjs.com/package/@angular/material)
+- [ngx-markdown](https://www.npmjs.com/package/ngx-markdown)
 
-## Build
+## Installation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```
+npm install ng-docx
+```
 
-## Running unit tests
+### Add styles
+Import on your **global styles**:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- The styles **from** the **library**:
 
-## Running end-to-end tests
+    *styles.scss*
+    ```css
+    @import "node_modules/ng-docx/src/lib/assets/styles/ng-docx.scss";
+    ```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+- Don't forget import the styles **from** the libraries that are **dependencies**:
+  
+    *angular.json*
+    ```json
+    "styles": [
+        "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+        "node_modules/prismjs/themes/prism-okaidia.css",
+        "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css"
+    ]
+    ```
 
-## Further help
+### Add scripts
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Don't forget import the **scripts from** the libraries that are **dependencies**:
+
+*angular.json*
+```json
+"scripts": [
+    "node_modules/marked/lib/marked.js",
+    "node_modules/prismjs/prism.js",
+    "node_modules/prismjs/components/prism-typescript.min.js",
+    "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js"
+]
+```
+
+## Import the library
+
+### Steps
+To make your documentation page you must wrap the NgDocxModule, for this follow these steps:
+
+1. **Create a Module** on your app, i.e, DocsModule (docs.module.ts)
+   
+2. **Import** the **NgDocxModule** and the **NgDocxComponent**
+
+    *docs.module.ts*
+    ```typescript
+    import { NgDocxModule, NgDocxComponent } from 'ngx-docx';
+    ```
+3. Add the names of the files you want to add to the documentation.
+
+    *docs.module.ts*
+    ```typescript
+    const fileNames = ['getting started', 'what\'s next'];
+
+    @NgModule({
+        imports: [
+            NgDocxModule.forRoot({
+                files: fileNames
+            })
+        ]
+    })
+    ```
+4. Add the route to NgDocxComponent on your module.
+
+    *docs.module.ts*
+    ```typescript
+    const routes: Routes = [
+        {
+            path: '',
+            children: [{ path: '', component: NgDocxComponent }]
+        }
+    ];
+    @NgModule({
+        imports: [
+            NgDocxModule.forRoot({
+                files: fileNames
+            }),
+            RouterModule.forChild(routes)
+        ]
+    })
+    ```
+
+### Final code on your wrap module
+
+```typescript
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { NgDocxModule, NgDocxComponent } from 'projects/ng-docx/src/public-api';
+
+const fileNames = ['getting started', "what's next"];
+
+const routes: Routes = [
+    {
+        path: '',
+        children: [{ path: '', component: NgDocxComponent }]
+    }
+];
+
+@NgModule({
+    imports: [
+        NgDocxModule.forRoot({
+            files: fileNames
+        }),
+        RouterModule.forChild(routes)
+    ]
+})
+export class WrapperDocsModule {}
+```
+
+## What type of extensions are supported?
+
+- Markdown (.md)
+
+## Where are my docs located?
+
+The files must be placed in the **assets folder** **inside a subfolder** called **docs**, for example:
+
+- assets
+  - docs
+    - getting started.md
+    - what's next.md
+
