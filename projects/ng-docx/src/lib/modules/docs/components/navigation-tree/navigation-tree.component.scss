@@ -38,14 +38,12 @@
 
         &.navigation-item-selected {
             font-weight: 500;
-            color: $primary-color;
 
             &::after {
                 content: "";
                 border-radius: 50%;
                 left: 18px;
                 top: 11px;
-                background: $primary-color;
                 position: absolute;
                 width: 6px;
                 height: 6px;

@@ -1,12 +1,12 @@
 # Getting Started
 
-Welcome to NG-DOCX! 
+Welcome to NG-DOCX!
 
 ## What is Ng-docx?
 
 Ng-docx is a library that automatically generates a documentation page to easily and beautifully view your markdowns
 
-## Dependencies
+## PeerDependencies
 Before install the library, install the necessary dependencies to function properly
 
 - [@angular/material](https://www.npmjs.com/package/@angular/material)
@@ -25,7 +25,7 @@ Import on your **global styles**:
 
     *styles.scss*
     ```css
-    @import "node_modules/ng-docx/src/lib/assets/styles/ng-docx.scss";
+    @import "node_modules/ng-docx/assets/styles/ng-docx.scss";
     ```
 
 - Don't forget import the styles **from** the libraries that are **dependencies**:
@@ -70,7 +70,7 @@ To make your documentation page you must wrap the NgDocxModule, for this follow 
 
     *docs.module.ts*
     ```typescript
-    const fileNames = ['getting started', 'what\'s next'];
+    const fileNames = ['getting started', 'theming'];
 
     @NgModule({
         imports: [
@@ -105,9 +105,9 @@ To make your documentation page you must wrap the NgDocxModule, for this follow 
 ```typescript
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NgDocxModule, NgDocxComponent } from 'projects/ng-docx/src/public-api';
+import { NgDocxModule, NgDocxComponent } from 'ng-docx';
 
-const fileNames = ['getting started', "what's next"];
+const fileNames = ['getting started', 'theming'];
 
 const routes: Routes = [
     {
@@ -138,5 +138,5 @@ The files must be placed in the **assets folder** **inside a subfolder** called 
 - assets
   - docs
     - getting started.md
-    - what's next.md
+    - theming.md
 

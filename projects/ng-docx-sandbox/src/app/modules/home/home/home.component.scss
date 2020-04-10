@@ -1,4 +1,4 @@
-@import "../../../../variables.scss";
+@import "../../../../assets/styles/variables.scss";
 
 .background-home {
   display: flex;
@@ -13,7 +13,6 @@
   box-sizing: border-box;
   padding: 48px 48px 32px;
   overflow: hidden;
-  transform: skewY(8deg);
   transform-origin: 100%;
   background-color: $primary-color;
   background: linear-gradient(145deg, $primary-color-dark, $primary-color);
@@ -21,21 +20,20 @@
 }
 
 section#intro {
-  display: flex;
   align-items: center;
   position: relative;
   width: 900px;
   height: 480px;
-  margin: 0 auto -32px;
-  padding: 48px 0 0;
+  margin: 0 auto;
+  padding: 75px 0 0;
   color: #fff;
 
-  .cookie-logo {
+  .home-logo {
     display: flex;
     width: 100%;
     img {
-      width: 250px;
-      height: 250px;
+      width: 200px;
+      height: 200px;
       margin-bottom: 8px;
       padding: 0;
       -webkit-filter: drop-shadow(0 2px 2px rgba(10, 16, 20, 0.24));
@@ -45,23 +43,22 @@ section#intro {
   }
   .intro-container {
     width: 100%;
+    text-align: center;
     max-width: 1040px;
-    margin: -7% auto 0;
+    margin: 0 auto 0;
     padding-top: 0;
     padding-bottom: 0;
   }
 
   .intro-headline {
-    font-size: 40px;
+    font-size: 30px;
     line-height: 64px;
     font-weight: 500;
-    margin: 32px 0;
   }
 
   .intro-cta {
     padding: 2px 34px 0;
-    font-size: 18px;
-    font-size: 1.8rem;
+    font-size: 22px;
     font-weight: 600;
     line-height: 40px;
     line-height: 4rem;

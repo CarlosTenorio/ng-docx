@@ -1,6 +1,6 @@
 # What's next?
 
-- Theming with Angular Material
+- Add routing by name
 - Hidden option on sidenav menu
 - Search engine.
 - Copy paste on code blocks

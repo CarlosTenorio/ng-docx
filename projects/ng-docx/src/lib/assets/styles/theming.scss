@@ -1,0 +1,16 @@
+@mixin ng-docx($primary-palette) {
+    $app-primary: mat-palette($primary-palette);
+    $color-primary: mat-color($app-primary);
+
+    .navigationMenu {
+        a {
+            &.navigation-item-selected {
+                color: $color-primary;
+            }
+
+            &::after {
+                background-color: $color-primary;
+            }
+        }
+    }
+}
