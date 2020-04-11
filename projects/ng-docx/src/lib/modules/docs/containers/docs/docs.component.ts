@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation, Inject } from '@angular/core';
+import { Component, ViewEncapsulation, Inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DocsService } from './../../services/docs/docs.service';
 import { ConfigInterface } from '../../models';
 
@@ -8,17 +9,33 @@ import { ConfigInterface } from '../../models';
     styleUrls: ['./docs.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class NgDocxComponent {
+export class NgDocxComponent implements OnInit {
     markdownBefore: string = null;
     markdown: string;
 
-    constructor(@Inject('config') private config: ConfigInterface, private docsService: DocsService) {
-        this.markdown = `assets/docs/${config.files[0]}.md`;
+    constructor(
+        @Inject('config') private config: ConfigInterface,
+        private docsService: DocsService,
+        private router: Router
+    ) {}
+
+    ngOnInit() {
+        const title = this.getQueryParamTitle();
+        this.markdown = `assets/docs/${title ? title : this.config.files[0]}.md`;
+    }
+
+    getQueryParamTitle(): string {
+        return this.router.routerState.snapshot.root.queryParams.title;
     }
 
     loadMarkdown(markdownName: string) {
         this.markdownBefore = this.markdown;
         this.markdown = `assets/docs/${markdownName}.md`;
+        this.writeQueryParam(markdownName);
+    }
+
+    writeQueryParam(markdownName: string) {
+        window.history.replaceState(null, null, `${window.location.pathname}?title=${markdownName}`);
     }
 
     notifyMarkdownChanges() {
