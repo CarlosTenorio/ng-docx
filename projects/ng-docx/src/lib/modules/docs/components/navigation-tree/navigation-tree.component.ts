@@ -48,8 +48,10 @@ export class NavigationTreeComponent implements OnInit {
 
     createSectionTitle() {
         const titleH1 = document.getElementsByTagName('h1')[0];
-        this.wrapElementWithSection(titleH1, '0');
-        this.createTreeItem(titleH1.textContent, 0);
+        if (titleH1) {
+            this.wrapElementWithSection(titleH1, '0');
+            this.createTreeItem(titleH1.textContent, 0);
+        }
     }
 
     createSectionSubTitles() {
