@@ -12,6 +12,7 @@ import { ConfigInterface } from '../../models';
 export class NgDocxComponent implements OnInit {
     markdownBefore: string = null;
     markdown: string;
+    markdownName: string;
 
     constructor(
         @Inject('config') private config: ConfigInterface,
@@ -29,9 +30,10 @@ export class NgDocxComponent implements OnInit {
     }
 
     loadMarkdown(markdownName: string) {
+        this.markdownName = markdownName;
         this.markdownBefore = this.markdown;
-        this.markdown = `assets/docs/${markdownName}.md`;
-        this.writeQueryParam(markdownName);
+        this.markdown = `assets/docs/${this.markdownName}.md`;
+        this.writeQueryParam(this.markdownName);
     }
 
     writeQueryParam(markdownName: string) {

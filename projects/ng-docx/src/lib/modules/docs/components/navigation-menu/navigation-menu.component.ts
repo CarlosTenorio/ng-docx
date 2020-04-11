@@ -7,6 +7,7 @@ import { ConfigInterface } from '../../models';
     styleUrls: ['./navigation-menu.component.scss']
 })
 export class NavigationMenuComponent implements OnInit {
+    @Input() currentFile: string;
     @Output() markdownChange = new EventEmitter<string>();
 
     files: string[];
@@ -15,6 +16,9 @@ export class NavigationMenuComponent implements OnInit {
 
     ngOnInit() {
         this.files = this.config.files;
+        if (!this.currentFile) {
+            this.currentFile = this.files[0];
+        }
     }
 
     loadMarkdown(name: string) {

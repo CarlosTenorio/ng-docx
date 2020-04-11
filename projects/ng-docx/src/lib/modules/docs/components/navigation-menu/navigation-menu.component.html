@@ -1,3 +1,12 @@
 <div class="item-navigation">
-    <div *ngFor="let file of files" (click)="loadMarkdown(file)">{{ file }}</div>
+    <div
+        *ngFor="let file of files"
+        (click)="loadMarkdown(file)"
+        class="files"
+        [class.item-actived]="currentFile === file"
+    >
+        <div class="text">
+            {{ file }}
+        </div>
+    </div>
 </div>

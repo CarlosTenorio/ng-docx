@@ -8,18 +8,26 @@
     align-items: center;
     justify-content: space-between;
     overflow-wrap: break-word;
-    padding: 8px;
     text-decoration: none;
     text-align: left;
     width: 100%;
     word-wrap: break-word;
     text-transform: uppercase;
 
-    :first-child {
-        margin-top: 20px;
+    .files {
+        &:first-child {
+            margin-top: 20px;
+        }
+        &:hover {
+            background-color: #dbdbdb;
+        }
+
+        .text {
+            padding: 8px;
+        }
     }
 
-    div {
-        margin-bottom: 10px;
+    .item-actived {
+        color: $primary-color;
     }
 }
