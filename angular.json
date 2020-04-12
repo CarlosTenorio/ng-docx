@@ -61,16 +61,9 @@
                         "assets": ["projects/ng-docx-sandbox/src/favicon.ico", "projects/ng-docx-sandbox/src/assets"],
                         "styles": [
                             "projects/ng-docx-sandbox/src/assets/styles/styles.scss",
-                            "projects/ng-docx-sandbox/src/assets/styles/theme.scss",
-                            "node_modules/prismjs/themes/prism-okaidia.css",
-                            "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css"
+                            "projects/ng-docx-sandbox/src/assets/styles/theme.scss"
                         ],
-                        "scripts": [
-                            "node_modules/marked/lib/marked.js",
-                            "node_modules/prismjs/prism.js",
-                            "node_modules/prismjs/components/prism-typescript.min.js",
-                            "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js"
-                        ]
+                        "scripts": ["node_modules/ng-docx/src/lib/assets/js/ng-docx.js"]
                     },
                     "configurations": {
                         "production": {

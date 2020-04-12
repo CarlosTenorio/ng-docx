@@ -10,7 +10,6 @@ Ng-docx is a library that automatically generates a documentation page to easily
 Before install the library, install the necessary dependencies to function properly
 
 - [@angular/material](https://www.npmjs.com/package/@angular/material)
-- [ngx-markdown](https://www.npmjs.com/package/ngx-markdown)
 
 ## Installation
 
@@ -25,31 +24,14 @@ Import on your **global styles**:
 
     *styles.scss*
     ```css
-    @import "node_modules/ng-docx/assets/styles/ng-docx.scss";
-    ```
-
-- Don't forget import the styles **from** the libraries that are **dependencies**:
-  
-    *angular.json*
-    ```json
-    "styles": [
-        "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-        "node_modules/prismjs/themes/prism-okaidia.css",
-        "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css"
-    ]
+    @import "~ng-docx/assets/styles/ng-docx.scss";
     ```
 
 ### Add scripts
-
-Don't forget import the **scripts from** the libraries that are **dependencies**:
-
 *angular.json*
 ```json
 "scripts": [
-    "node_modules/marked/lib/marked.js",
-    "node_modules/prismjs/prism.js",
-    "node_modules/prismjs/components/prism-typescript.min.js",
-    "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js"
+    "node_modules/ng-docx/assets/ng-docx.js"
 ]
 ```
 
