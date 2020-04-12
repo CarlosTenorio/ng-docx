@@ -91,7 +91,7 @@ export class NavigationTreeComponent implements OnInit {
         aItem.appendChild(aText);
         aItem.title = text;
         aItem.id = `navItem${index}`;
-        aItem.href = `docs#${index}`;
+        aItem.href = `${window.location.pathname + window.location.search}#${index}`;
         div.appendChild(aItem);
         navigationMenu.appendChild(div);
         subItems.forEach((subItem: Element, subIndex: number) => {
@@ -106,7 +106,7 @@ export class NavigationTreeComponent implements OnInit {
         aSubItem.appendChild(aText);
         aSubItem.title = text;
         aSubItem.id = `navItem${id}`;
-        aSubItem.href = `docs#${id}`;
+        aSubItem.href = `${window.location.pathname + window.location.search}#${id}`;
         aSubItem.classList.add('sub-item-navigation');
         div.appendChild(aSubItem);
         parent.insertAdjacentElement('beforeend', div);
