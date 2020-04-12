@@ -63,7 +63,7 @@
                             "projects/ng-docx-sandbox/src/assets/styles/styles.scss",
                             "projects/ng-docx-sandbox/src/assets/styles/theme.scss"
                         ],
-                        "scripts": ["node_modules/ng-docx/src/lib/assets/js/ng-docx.js"]
+                        "scripts": ["node_modules/ng-docx/assets/js/ng-docx.js"]
                     },
                     "configurations": {
                         "production": {

@@ -1,5 +1,5 @@
 @import "~@angular/material/theming";
-@import "node_modules/ng-docx/src/lib/assets/styles/theming.scss";
+@import "node_modules/ng-docx/assets/styles/theming.scss";
 @include mat-core();
 
 $palette-primary: (
