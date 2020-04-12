@@ -8,4 +8,6 @@ app.use(express.static(dir));
 app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname + '/' + dir + '/index.html'));
 });
-app.listen(port);
+app.listen(port, function () {
+    console.log('App running on port ' + port);
+});
