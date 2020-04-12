@@ -19,10 +19,6 @@ export class NavigationTreeComponent implements OnInit {
 
     ngOnInit() {
         this.loadObservables();
-        setTimeout(() => {
-            this.loadSections();
-            this.sectionsLoaded.emit(true);
-        });
         this.markdownChange$.subscribe((isChanged: boolean) => {
             if (isChanged) {
                 this.cleanTree();

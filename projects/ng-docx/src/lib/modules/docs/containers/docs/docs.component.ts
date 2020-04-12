@@ -41,7 +41,7 @@ export class NgDocxComponent implements OnInit {
     }
 
     notifyMarkdownChanges() {
-        if (this.markdownBefore && this.markdownBefore !== this.markdown) {
+        if (this.markdownBefore !== this.markdown) {
             this.docsService.notifyMarkdownChanges();
             document.querySelector('.mat-sidenav-content').scrollTop = 0;
         }
