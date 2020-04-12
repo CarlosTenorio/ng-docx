@@ -9,7 +9,9 @@
 
 # Getting Started
 
-Welcome to NG-DOCX!
+Welcome to [NG-DOCX](https://ngdocx.herokuapp.com)!
+
+[DEMO](https://ngdocx.herokuapp.com/docs)
 
 ## What is Ng-docx?
 
