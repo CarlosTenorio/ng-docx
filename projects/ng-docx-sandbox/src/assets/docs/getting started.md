@@ -2,9 +2,9 @@
     <img  alt="Ng-Docx Logo"src="https://raw.githubusercontent.com/CarlosTenorio/ng-docx/master/projects/ng-docx-sandbox/src/assets/images/NG_DOCX_icon.png"  width="12%">
 </p>
 
-[![npm version](https://img.shields.io/npm/v/ng-docx.svg?style=flat)](https://www.npmjs.com/package/ng-docx)
-[![npm download](https://img.shields.io/npm/dm/ng-docx.svg)](https://www.npmjs.com/package/ng-docx)
-[![license](https://img.shields.io/npm/l/ng-docx.svg)](https://www.npmjs.com/package/ng-docx)
+[![npm version](https://img.shields.io/npm/v/ng-docx?style=flat)](https://www.npmjs.com/package/ng-docx)
+[![npm download](https://img.shields.io/npm/dm/ng-docx)](https://www.npmjs.com/package/ng-docx)
+[![license](https://img.shields.io/npm/l/ng-docx)](https://www.npmjs.com/package/ng-docx)
 
 
 # Getting Started

@@ -3,14 +3,16 @@
     "version": "0.0.0",
     "scripts": {
         "ng": "ng",
-        "start": "ng serve ng-docx-sandbox",
+        "serve": "ng serve ng-docx-sandbox",
+        "start": "node server.js",
         "build:lib": "ng build ng-docx && npm run copy-lib-assets",
         "copy-lib-assets": "cpx ./projects/ng-docx/src/lib/assets/**/* ./dist/ng-docx/assets && node copy_README.js",
         "build:lib-watch": "ng build ng-docx --watch",
-        "build:sandbox": "ng build ng-docx-sandbox",
+        "deploy": "ng build ng-docx-sandbox --aot --prod",
         "test": "ng test",
         "lint": "ng lint",
-        "e2e": "ng e2e"
+        "e2e": "ng e2e",
+        "postinstall": "npm run build:lib && ng build ng-docx-sandbox --aot --prod"
     },
     "private": false,
     "dependencies": {
@@ -24,6 +26,7 @@
         "@angular/platform-browser": "~9.0.6",
         "@angular/platform-browser-dynamic": "~9.0.6",
         "@angular/router": "~9.0.6",
+        "express": "^4.17.1",
         "ng-docx": "file:projects/ng-docx",
         "rxjs": "~6.5.4",
         "tslib": "^1.10.0",
@@ -53,5 +56,9 @@
         "ts-node": "~8.3.0",
         "tslint": "~5.18.0",
         "typescript": "~3.7.5"
+    },
+    "engines": {
+        "node": "12.16.2",
+        "npm": "6.14.4"
     }
 }
