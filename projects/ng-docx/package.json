@@ -1,6 +1,6 @@
 {
     "name": "ng-docx",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "dependencies": {
         "ngx-markdown": "^9.0.0"
     },
@@ -10,5 +10,12 @@
         "@angular/material": "^9.2.0",
         "tslib": "^1.10.0"
     },
-    "license": "MIT"
+    "license": "MIT",
+    "keywords": [
+        "angular",
+        "docs",
+        "documentation",
+        "markdown",
+        "ng"
+    ]
 }
