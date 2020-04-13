@@ -16,7 +16,7 @@
 
 mat-sidenav-content {
   background-color: white;
-  padding: 25px;
+  padding: 30px;
   height: calc(100vh - 114px) !important;
 }
 
@@ -37,4 +37,10 @@ mat-sidenav-content {
   .mat-drawer-side.mat-drawer-end {
     border-left: none;
   }
+}
+
+.menu-icon {
+  position: absolute !important;
+  left: -3px;
+  top: -5px;
 }

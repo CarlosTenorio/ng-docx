@@ -1,8 +1,11 @@
 <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav mode="side" opened class="sidenav-left">
+    <mat-sidenav [opened]="sidenavOpened" mode="side" opened class="sidenav-left">
         <lib-navigation-menu [currentFile]="markdownName" (markdownChange)="loadMarkdown($event)"></lib-navigation-menu>
     </mat-sidenav>
     <mat-sidenav-content (scroll)="onScroll()">
+        <button mat-icon-button aria-label="menu icon" (click)="switchSidenav()" class="menu-icon">
+            <mat-icon>{{ sidenavOpened ? 'menu_open' : 'menu' }}</mat-icon>
+        </button>
         <markdown [src]="markdown" (ready)="notifyMarkdownChanges()" lineNumbers></markdown>
     </mat-sidenav-content>
     <mat-sidenav class="sidenav-right" opened mode="side" position="end">
