@@ -29,7 +29,7 @@
         "@angular/platform-browser-dynamic": "~9.0.6",
         "@angular/router": "~9.0.6",
         "express": "^4.17.1",
-        "ng-docx": "0.0.8",
+        "ng-docx": "0.0.9",
         "rxjs": "~6.5.4",
         "tslib": "^1.10.0",
         "typescript": "~3.7.5",
@@ -60,5 +60,12 @@
     "engines": {
         "node": "12.x",
         "npm": "6.x"
-    }
+    },
+    "keywords": [
+        "angular",
+        "docs",
+        "documentation",
+        "markdown",
+        "ng"
+    ]
 }

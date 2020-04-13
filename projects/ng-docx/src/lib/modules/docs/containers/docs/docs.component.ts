@@ -13,6 +13,7 @@ export class NgDocxComponent implements OnInit {
     markdownBefore: string = null;
     markdown: string;
     markdownName: string;
+    sidenavOpened = true;
 
     constructor(
         @Inject('config') private config: ConfigInterface,
@@ -76,5 +77,9 @@ export class NgDocxComponent implements OnInit {
                 item.classList.add(className);
             }
         }
+    }
+
+    switchSidenav() {
+        this.sidenavOpened = !this.sidenavOpened;
     }
 }

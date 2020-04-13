@@ -2,7 +2,8 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Route, RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NavigationTreeComponent, NavigationMenuComponent } from './components';
 import { NgDocxComponent } from './containers';
@@ -16,8 +17,9 @@ const childRoutes: Route[] = [{ path: '', component: NgDocxComponent }];
     imports: [
         CommonModule,
         RouterModule.forChild(childRoutes),
+        MatButtonModule,
+        MatIconModule,
         MatSidenavModule,
-        MatExpansionModule,
         HttpClientModule,
         MarkdownModule.forRoot({ loader: HttpClient })
     ]
