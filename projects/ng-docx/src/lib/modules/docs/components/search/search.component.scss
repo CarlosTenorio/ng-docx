@@ -1,0 +1,52 @@
+@import "../../../../assets/styles/variables.scss";
+
+.button-search {
+    position: absolute !important;
+    right: 20px;
+    bottom: 20px;
+}
+
+.panel-search {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    height: 200px;
+    width: 100%;
+    background-color: $text-color;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
+
+    .panel-results {
+        color: white;
+        padding: 20px;
+        display: flex;
+        flex: 100%;
+        flex-direction: column;
+        flex-wrap: wrap;
+
+        .item-result {
+            padding: 10px;
+            color: #dbdbdb;
+            cursor: pointer;
+            flex: 1 0 5%;
+
+            &:hover {
+                color: white;
+            }
+        }
+    }
+    .panel-form {
+        align-self: flex-end;
+        color: white;
+        flex: 1;
+        text-align: right;
+        margin-right: 20px;
+
+        ::ng-deep .mat-form-field-underline {
+            background-color: white;
+        }
+    }
+
+    .icon-cross {
+        cursor: pointer;
+    }
+}
