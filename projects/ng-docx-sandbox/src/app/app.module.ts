@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -20,7 +21,8 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.js';
         CommonModule,
         RouterModule.forRoot([]),
         AppRoutingModule,
-        MatToolbarModule
+        MatToolbarModule,
+        MatIconModule
     ],
     providers: [],
     bootstrap: [AppComponent]
