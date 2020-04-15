@@ -23,7 +23,6 @@ section#intro {
   align-items: center;
   position: relative;
   width: 900px;
-  height: 480px;
   margin: 0 auto;
   padding: 75px 0 0;
   color: #fff;
@@ -70,5 +69,41 @@ section#intro {
     text-decoration: none;
     text-transform: uppercase;
     color: $primary-color;
+  }
+}
+
+.features {
+  hr {
+    border: none;
+    background: #dbdbdb;
+    height: 1px;
+    width: 90%;
+  }
+
+  .feature-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    max-width: 920px;
+    margin: 32px auto;
+  }
+  .info {
+    max-width: 50%;
+  }
+
+  .title {
+    font-size: 20px;
+    font-weight: 500;
+    color: $primary-color;
+    text-transform: uppercase;
+  }
+
+  .navigation-tree-img {
+    max-width: 35%;
+  }
+
+  .serach_engine_img {
+    max-width: 35%;
   }
 }
