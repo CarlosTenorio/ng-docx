@@ -14,6 +14,7 @@ export class NgDocxComponent implements OnInit {
     markdown: string;
     markdownName: string;
     sidenavOpened = true;
+    docsDir = 'assets/docs/';
 
     constructor(
         @Inject('config') private config: ConfigInterface,
@@ -23,7 +24,7 @@ export class NgDocxComponent implements OnInit {
 
     ngOnInit() {
         const title = this.getQueryParamTitle();
-        this.markdown = `assets/docs/${title ? title : this.config.files[0]}.md`;
+        this.markdown = `${this.docsDir}${title ? title : this.config.files[0]}.md`;
     }
 
     getQueryParamTitle(): string {
@@ -33,7 +34,7 @@ export class NgDocxComponent implements OnInit {
     loadMarkdown(markdownName: string) {
         this.markdownName = markdownName;
         this.markdownBefore = this.markdown;
-        this.markdown = `assets/docs/${this.markdownName}.md`;
+        this.markdown = `${this.docsDir}${this.markdownName}.md`;
         this.writeQueryParam(this.markdownName);
     }
 

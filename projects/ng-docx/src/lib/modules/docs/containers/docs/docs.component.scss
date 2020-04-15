@@ -20,9 +20,16 @@ mat-sidenav-content {
   height: calc(100vh - 114px) !important;
 }
 
+lib-search {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
+}
+
 .sidenav-container {
   position: relative;
-  height: calc(100%-64px);
+  height: calc(100% - 64px);
   background: #eee;
   mat-sidenav {
     width: 200px;
