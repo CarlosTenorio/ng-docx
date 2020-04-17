@@ -13,6 +13,7 @@ export class NgDocxComponent implements OnInit {
     markdownBefore: string = null;
     markdown: string;
     markdownName: string;
+    searchValue: string = null;
     sidenavOpened = true;
     docsDir = 'assets/docs/';
 
@@ -31,11 +32,17 @@ export class NgDocxComponent implements OnInit {
         return this.router.routerState.snapshot.root.queryParams.title;
     }
 
-    loadMarkdown(markdownName: string) {
+    loadMarkdown(markdownName: string, searchValue: string = null) {
         this.markdownName = markdownName;
         this.markdownBefore = this.markdown;
         this.markdown = `${this.docsDir}${this.markdownName}.md`;
         this.writeQueryParam(this.markdownName);
+        this.searchValue = searchValue;
+        if (this.searchValue && this.markdownBefore === this.markdown) {
+            this.unHighlightSearch();
+            this.highlightSearch(this.searchValue);
+            this.searchValue = null;
+        }
     }
 
     writeQueryParam(markdownName: string) {
@@ -46,6 +53,10 @@ export class NgDocxComponent implements OnInit {
         if (this.markdownBefore !== this.markdown) {
             this.docsService.notifyMarkdownChanges();
             document.querySelector('.mat-sidenav-content').scrollTop = 0;
+        }
+        if (this.searchValue) {
+            this.highlightSearch(this.searchValue);
+            this.searchValue = null;
         }
     }
 
@@ -82,5 +93,41 @@ export class NgDocxComponent implements OnInit {
 
     switchSidenav() {
         this.sidenavOpened = !this.sidenavOpened;
+    }
+
+    unHighlightSearch() {
+        const className = 'highlight-search';
+        const highlightElements = document.getElementsByClassName(className);
+        const arrhighlightElements = [...(highlightElements as any)];
+        arrhighlightElements.forEach((element) => {
+            element.classList.remove(className);
+        });
+    }
+
+    highlightSearch(text: string) {
+        const inputText = document.getElementsByTagName('markdown')[0];
+        const innerHTML = inputText.innerHTML;
+        const index = innerHTML.toLocaleLowerCase().indexOf(text.toLocaleLowerCase());
+        if (index >= 0) {
+            this.paintSearchAndScrollTo(text, inputText, innerHTML, index);
+        }
+    }
+
+    paintSearchAndScrollTo(text: string, inputText: Element, innerHTML: string, index: number) {
+        innerHTML =
+            innerHTML.substring(0, index) +
+            "<span class='highlight-search'>" +
+            innerHTML.substring(index, index + text.length) +
+            '</span>' +
+            innerHTML.substring(index + text.length);
+        inputText.innerHTML = innerHTML;
+        const highlightElement = document.getElementsByClassName('highlight-search')[0];
+        const toolbar = document.getElementsByTagName('mat-toolbar')[0];
+        const someSpace = 20;
+        document.querySelector('.mat-sidenav-content').scrollTop =
+            document.querySelector('.mat-sidenav-content').scrollTop +
+            highlightElement.getBoundingClientRect().top -
+            toolbar.getBoundingClientRect().height -
+            someSpace;
     }
 }

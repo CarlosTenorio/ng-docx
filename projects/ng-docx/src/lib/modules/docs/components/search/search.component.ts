@@ -1,7 +1,6 @@
 import { Component, HostListener, ViewChild, ElementRef, OnInit, Inject, EventEmitter, Output } from '@angular/core';
 import { SearchItem, ConfigInterface } from '../../models';
 import { forkJoin, Observable } from 'rxjs';
-import * as Fuse from 'fuse.js/dist/fuse';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -10,20 +9,13 @@ import { HttpClient } from '@angular/common/http';
     styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-    @Output() navigateToMarkdown = new EventEmitter<string>();
+    @Output() navigateToMarkdown = new EventEmitter<{ title: string; search: string }>();
 
     panelVisible = false;
     searchValue: string;
-    results: Fuse.FuseResult<any>[] = [];
+    results: any = [];
     indexSearch = [];
     docsDir = 'assets/docs/';
-    options = {
-        keys: ['text', 'title'],
-        findAllMatches: false,
-        threshold: 0.2,
-        distance: 0
-    };
-    fuse: Fuse<any, Fuse.IFuseOptions<any>>;
 
     @ViewChild('inputSearch', { static: false }) private inputSearch: ElementRef;
 
@@ -40,10 +32,8 @@ export class SearchComponent implements OnInit {
     buildIndexSearch() {
         forkJoin(this.getFiles()).subscribe((texts: string[]) => {
             texts.forEach((content: string, index: number) => {
-                this.options.distance = this.options.distance + content.length;
                 this.indexSearch.push({ title: this.config.files[index], text: content } as SearchItem);
             });
-            this.fuse = new Fuse(this.indexSearch, this.options);
         });
     }
 
@@ -55,10 +45,23 @@ export class SearchComponent implements OnInit {
 
     search() {
         if (this.searchValue) {
-            this.results = this.fuse.search(this.searchValue);
+            this.results = this.searchEngine(this.searchValue, ['text']);
         } else {
             this.cleanResults();
         }
+    }
+
+    searchEngine(queryQuery: string, keys: string[]): any[] {
+        const results = [];
+        this.indexSearch.forEach((item) => {
+            keys.forEach((key: string) => {
+                const index = item[key].toLocaleLowerCase().indexOf(queryQuery.toLocaleLowerCase());
+                if (index >= 0) {
+                    results.push(item);
+                }
+            });
+        });
+        return results.length ? results : null;
     }
 
     openPanel() {
@@ -81,7 +84,8 @@ export class SearchComponent implements OnInit {
     }
 
     navigateTo(title: string) {
-        this.navigateToMarkdown.emit(title);
+        const search = this.searchValue;
+        this.navigateToMarkdown.emit({ title, search });
         this.closePanel();
     }
 }
