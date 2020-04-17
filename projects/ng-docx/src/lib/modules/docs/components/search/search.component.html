@@ -5,8 +5,8 @@
 
     <div *ngIf="panelVisible" class="panel-search">
         <div class="panel-results">
-            <div *ngFor="let result of results" (click)="navigateTo(result.item.title)" class="item-result">
-                {{ result.item.title | uppercase }}
+            <div *ngFor="let result of results" (click)="navigateTo(result.title)" class="item-result">
+                {{ result.title | uppercase }}
             </div>
         </div>
         <form class="panel-form">
