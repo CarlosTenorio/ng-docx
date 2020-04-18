@@ -1,0 +1,41 @@
+@import "../../../../../assets/styles/variables.scss";
+
+.footer {
+    line-height: 2.4rem;
+    flex: 1;
+    padding: 48px;
+    background-color: $primary-color;
+    font-weight: 300;
+
+    .grid {
+        display: flex;
+        justify-content: center;
+        text-align: left;
+
+        .footer-block {
+            margin: 0 24px;
+            vertical-align: top;
+
+            ul,
+            li {
+                padding: 0;
+                text-align: center;
+                display: inline;
+                margin: 20px !important;
+            }
+
+            li {
+                &:hover {
+                    background-color: #ffffff1a;
+                }
+            }
+
+            .link {
+                text-transform: uppercase;
+                text-decoration: none;
+                color: white;
+                font-weight: 400;
+            }
+        }
+    }
+}
