@@ -1,5 +1,7 @@
-import { Component, Input, EventEmitter, Output, OnInit, Inject } from '@angular/core';
-import { ConfigInterface } from '../../models';
+import { Component, Input, EventEmitter, Output, OnInit } from '@angular/core';
+import { FileSystemService } from './../../services/file-system/file-system.service';
+import { DocumentInterface } from '../../models';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'lib-navigation-menu',
@@ -10,15 +12,12 @@ export class NavigationMenuComponent implements OnInit {
     @Input() currentFile: string;
     @Output() markdownChange = new EventEmitter<string>();
 
-    files: string[];
+    docs$: Observable<DocumentInterface[]>;
 
-    constructor(@Inject('config') private config: ConfigInterface) {}
+    constructor(private fileSystem: FileSystemService) {}
 
     ngOnInit() {
-        this.files = this.config.files;
-        if (!this.currentFile) {
-            this.currentFile = this.files[0];
-        }
+        this.docs$ = this.fileSystem.docs$;
     }
 
     loadMarkdown(name: string) {

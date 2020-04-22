@@ -1,6 +1,14 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav [opened]="sidenavOpened" mode="side" opened class="sidenav-left">
         <lib-navigation-menu [currentFile]="markdownName" (markdownChange)="loadMarkdown($event)"></lib-navigation-menu>
+        <hr *ngIf="currentVersion" class="versioning-separator" />
+        <lib-versioning
+            *ngIf="currentVersion"
+            [versions]="config.versions"
+            [currentVersion]="currentVersion"
+            (versionChange)="versionChange($event)"
+            class="versioning"
+        ></lib-versioning>
     </mat-sidenav>
     <mat-sidenav-content (scroll)="onScroll()">
         <button mat-icon-button aria-label="menu icon" (click)="switchSidenav()" class="menu-icon">

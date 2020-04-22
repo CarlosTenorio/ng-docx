@@ -1,2 +1,2 @@
 export * from './configInterface';
-export * from './searchItem';
+export * from './documentInterface';
