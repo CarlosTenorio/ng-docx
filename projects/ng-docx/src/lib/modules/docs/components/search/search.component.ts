@@ -15,7 +15,6 @@ export class SearchComponent implements OnInit {
     searchValue: string;
     results: any = [];
     indexSearch = [];
-    docs$: Observable<DocumentInterface[]>;
 
     @ViewChild('inputSearch', { static: false }) private inputSearch: ElementRef;
 
@@ -26,15 +25,16 @@ export class SearchComponent implements OnInit {
     constructor(private fileSystem: FileSystemService) {}
 
     ngOnInit() {
-        this.docs$ = this.fileSystem.docs$;
+        this.fileSystem.docs$.subscribe((docs: DocumentInterface[]) => {
+            this.buildIndexSearch(docs);
+        });
     }
 
-    buildIndexSearch() {
-        if (!this.indexSearch.length) {
-            this.docs$.subscribe((docs: DocumentInterface[]) => {
-                docs.forEach((doc: DocumentInterface) => {
-                    this.indexSearch.push({ title: doc.title, content: doc.content } as DocumentInterface);
-                });
+    buildIndexSearch(docs: DocumentInterface[]) {
+        this.indexSearch = [];
+        if (docs.length) {
+            docs.forEach((doc: DocumentInterface) => {
+                this.indexSearch.push({ title: doc.title, content: doc.content } as DocumentInterface);
             });
         }
     }
@@ -61,7 +61,6 @@ export class SearchComponent implements OnInit {
     }
 
     openPanel() {
-        this.buildIndexSearch();
         this.panelVisible = true;
         setTimeout(() => {
             this.inputSearch.nativeElement.focus();
