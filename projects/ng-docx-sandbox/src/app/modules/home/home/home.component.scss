@@ -99,9 +99,24 @@ section#intro {
 
   .navigation-tree-img {
     max-width: 35%;
+    img {
+      width: 100%;
+    }
   }
 
   .serach_engine_img {
     max-width: 35%;
+    img {
+      width: 100%;
+    }
+  }
+
+  .versions_img {
+    max-width: 35%;
+    img {
+      width: 80%;
+      margin: auto;
+      display: block;
+    }
   }
 }
