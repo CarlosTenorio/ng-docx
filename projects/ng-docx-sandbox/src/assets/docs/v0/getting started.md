@@ -1,5 +1,14 @@
+<p align="center">
+    <img  alt="Ng-Docx Logo"src="https://raw.githubusercontent.com/CarlosTenorio/ng-docx/master/projects/ng-docx-sandbox/src/assets/images/NG_DOCX_icon.png"  width="12%">
+</p>
 
-# Getting Started V0
+[![Build Status](https://travis-ci.org/CarlosTenorio/ng-docx.svg?branch=master)](https://travis-ci.org/CarlosTenorio/ng-docx)
+[![npm version](https://img.shields.io/npm/v/ng-docx?style=flat)](https://www.npmjs.com/package/ng-docx)
+[![npm download](https://img.shields.io/npm/dm/ng-docx)](https://www.npmjs.com/package/ng-docx)
+[![license](https://img.shields.io/npm/l/ng-docx)](https://www.npmjs.com/package/ng-docx)
+
+
+# Getting Started
 
 Welcome to [NG-DOCX](https://ngdocx.herokuapp.com)!
 
@@ -23,12 +32,12 @@ npm install ng-docx
 ### Add styles
 Import on your **global styles**:
 
-- The styles **from** the **library**:
+The styles **from** the **library**:
 
-    *styles.scss*
-    ```css
-    @import "~ng-docx/assets/styles/ng-docx.scss";
-    ```
+*styles.scss*
+```css
+@import "~ng-docx/assets/styles/ng-docx.scss";
+```
 
 ### Add scripts
 *angular.json*

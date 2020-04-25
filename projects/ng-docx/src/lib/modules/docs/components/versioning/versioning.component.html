@@ -1,5 +1,5 @@
 <mat-form-field>
-    <mat-label>Versioning</mat-label>
+    <mat-label>Versions</mat-label>
     <mat-select [(value)]="currentVersion" (selectionChange)="selectionChange()">
         <mat-option *ngFor="let version of versions" [value]="version">
             {{ version }}

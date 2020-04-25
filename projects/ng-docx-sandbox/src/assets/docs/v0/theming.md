@@ -1,6 +1,6 @@
-# Theming V0
+# Theming
 
-NG-DOCX works through angular material.
+NG-DOCX works through **angular material**.
 
 ## Inlude the palette
 
