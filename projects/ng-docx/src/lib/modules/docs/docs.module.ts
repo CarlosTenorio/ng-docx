@@ -7,12 +7,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { NavigationTreeComponent, NavigationMenuComponent, SearchComponent } from './components';
+import { NavigationTreeComponent, NavigationMenuComponent, SearchComponent, VersioningComponent } from './components';
 import { ClickOutsideDirective } from './directives';
 import { NgDocxComponent } from './containers';
 import { ConfigInterface } from './models';
 import { MarkdownModule } from 'ngx-markdown';
+import { FileSystemService } from './services/file-system/file-system.service';
 
 const childRoutes: Route[] = [{ path: '', component: NgDocxComponent }];
 
@@ -22,7 +24,8 @@ const childRoutes: Route[] = [{ path: '', component: NgDocxComponent }];
         NavigationTreeComponent,
         NavigationMenuComponent,
         SearchComponent,
-        ClickOutsideDirective
+        ClickOutsideDirective,
+        VersioningComponent
     ],
     imports: [
         CommonModule,
@@ -32,10 +35,12 @@ const childRoutes: Route[] = [{ path: '', component: NgDocxComponent }];
         MatSidenavModule,
         MatInputModule,
         MatFormFieldModule,
+        MatSelectModule,
         FormsModule,
         HttpClientModule,
         MarkdownModule.forRoot({ loader: HttpClient })
-    ]
+    ],
+    providers: [FileSystemService]
 })
 export class NgDocxModule {
     static forRoot(configuration: ConfigInterface): ModuleWithProviders {

@@ -1,6 +1,6 @@
 {
     "name": "ng-docx",
-    "version": "0.0.12",
+    "version": "0.0.14",
     "dependencies": {
         "ngx-markdown": "^9.0.0"
     },
@@ -10,12 +10,18 @@
         "@angular/material": "^9.2.0",
         "tslib": "^1.10.0"
     },
+    "homepage": "https://ngdocx.herokuapp.com",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/CarlosTenorio/ng-docx"
+    },
     "license": "MIT",
     "keywords": [
         "angular",
         "docs",
         "documentation",
         "markdown",
-        "ng"
+        "ng",
+        "library"
     ]
 }

@@ -1,7 +1,6 @@
-import { Component, HostListener, ViewChild, ElementRef, OnInit, Inject, EventEmitter, Output } from '@angular/core';
-import { SearchItem, ConfigInterface } from '../../models';
-import { forkJoin, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { Component, HostListener, ViewChild, ElementRef, OnInit, EventEmitter, Output } from '@angular/core';
+import { DocumentInterface } from '../../models';
+import { FileSystemService } from '../../services/file-system/file-system.service';
 
 @Component({
     selector: 'lib-search',
@@ -15,7 +14,6 @@ export class SearchComponent implements OnInit {
     searchValue: string;
     results: any = [];
     indexSearch = [];
-    docsDir = 'assets/docs/';
 
     @ViewChild('inputSearch', { static: false }) private inputSearch: ElementRef;
 
@@ -23,29 +21,26 @@ export class SearchComponent implements OnInit {
         this.closePanel();
     }
 
-    constructor(@Inject('config') private config: ConfigInterface, private http: HttpClient) {}
+    constructor(private fileSystem: FileSystemService) {}
 
     ngOnInit() {
-        this.buildIndexSearch();
+        this.fileSystem.docs$.subscribe((docs: DocumentInterface[]) => {
+            this.buildIndexSearch(docs);
+        });
     }
 
-    buildIndexSearch() {
-        forkJoin(this.getFiles()).subscribe((texts: string[]) => {
-            texts.forEach((content: string, index: number) => {
-                this.indexSearch.push({ title: this.config.files[index], text: content } as SearchItem);
+    buildIndexSearch(docs: DocumentInterface[]) {
+        this.indexSearch = [];
+        if (docs.length) {
+            docs.forEach((doc: DocumentInterface) => {
+                this.indexSearch.push({ title: doc.title, content: doc.content } as DocumentInterface);
             });
-        });
-    }
-
-    getFiles(): Observable<string>[] {
-        return this.config.files.map((file: string) => {
-            return this.http.get(`${this.docsDir}${file}.md`, { responseType: 'text' });
-        });
+        }
     }
 
     search() {
         if (this.searchValue) {
-            this.results = this.searchEngine(this.searchValue, ['text']);
+            this.results = this.searchEngine(this.searchValue, ['content']);
         } else {
             this.cleanResults();
         }

@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
-import { UtilsService } from '../../services/utils.service';
+import { UtilsService } from '../../services/utils/utils.service';
 import { DocsService } from '../../services/docs/docs.service';
 import { Observable } from 'rxjs';
 

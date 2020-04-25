@@ -1,7 +1,10 @@
 import { Component, ViewEncapsulation, Inject, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { DocsService } from './../../services/docs/docs.service';
-import { ConfigInterface } from '../../models';
+import { FileSystemService } from './../../services/file-system/file-system.service';
+import { ConfigInterface, DocumentInterface } from '../../models';
+import { Observable } from 'rxjs';
+
+const DOCS_FOLDER = 'assets/docs/';
 
 @Component({
     selector: 'ng-docx',
@@ -10,26 +13,40 @@ import { ConfigInterface } from '../../models';
     encapsulation: ViewEncapsulation.None
 })
 export class NgDocxComponent implements OnInit {
+    currentVersion: string = null;
     markdownBefore: string = null;
     markdown: string;
     markdownName: string;
     searchValue: string = null;
     sidenavOpened = true;
-    docsDir = 'assets/docs/';
+    docsDir: string = DOCS_FOLDER;
+    docs$: Observable<DocumentInterface[]>;
 
     constructor(
-        @Inject('config') private config: ConfigInterface,
+        @Inject('config') public config: ConfigInterface,
         private docsService: DocsService,
-        private router: Router
+        private fileSystem: FileSystemService
     ) {}
 
     ngOnInit() {
-        const title = this.getQueryParamTitle();
-        this.markdown = `${this.docsDir}${title ? title : this.config.files[0]}.md`;
+        this.docs$ = this.fileSystem.docs$;
+        this.docs$.subscribe((docs: DocumentInterface[]) => {
+            if (docs.length) {
+                const title = this.getQueryParamTitle();
+                this.markdownName = docs.some((doc) => doc.title === title) ? title : docs[0].title;
+                this.loadMarkdown(this.markdownName);
+            }
+        });
+        if (this.config.versions) {
+            this.currentVersion = this.config.versions[this.config.versions.length - 1];
+            this.docsDir = `${DOCS_FOLDER}${this.currentVersion}/`;
+        }
+        this.fileSystem.loadDocs(this.docsDir, this.config.files);
     }
 
     getQueryParamTitle(): string {
-        return this.router.routerState.snapshot.root.queryParams.title;
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('title');
     }
 
     loadMarkdown(markdownName: string, searchValue: string = null) {
@@ -129,5 +146,11 @@ export class NgDocxComponent implements OnInit {
             highlightElement.getBoundingClientRect().top -
             toolbar.getBoundingClientRect().height -
             someSpace;
+    }
+
+    versionChange(newVersion: string) {
+        this.currentVersion = newVersion;
+        this.docsDir = `${DOCS_FOLDER}${this.currentVersion}/`;
+        this.fileSystem.loadDocs(this.docsDir, this.config.files);
     }
 }

@@ -1,12 +1,12 @@
 <div class="item-navigation">
     <div
-        *ngFor="let file of files"
-        (click)="loadMarkdown(file)"
+        *ngFor="let doc of docs$ | async"
+        (click)="loadMarkdown(doc.title)"
         class="files"
-        [class.item-actived]="currentFile === file"
+        [class.item-actived]="currentFile === doc.title"
     >
         <div class="text">
-            {{ file }}
+            {{ doc.title }}
         </div>
     </div>
 </div>

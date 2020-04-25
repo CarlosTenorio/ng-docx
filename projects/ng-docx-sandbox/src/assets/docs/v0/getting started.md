@@ -32,12 +32,12 @@ npm install ng-docx
 ### Add styles
 Import on your **global styles**:
 
-- The styles **from** the **library**:
+The styles **from** the **library**:
 
-    *styles.scss*
-    ```css
-    @import "~ng-docx/assets/styles/ng-docx.scss";
-    ```
+*styles.scss*
+```css
+@import "~ng-docx/assets/styles/ng-docx.scss";
+```
 
 ### Add scripts
 *angular.json*
