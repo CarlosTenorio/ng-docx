@@ -19,7 +19,7 @@ export class NgDocxComponent implements OnInit {
     markdownName: string;
     searchValue: string = null;
     sidenavOpened = true;
-    docsDir: string;
+    docsDir: string = DOCS_FOLDER;
     docs$: Observable<DocumentInterface[]>;
 
     constructor(
