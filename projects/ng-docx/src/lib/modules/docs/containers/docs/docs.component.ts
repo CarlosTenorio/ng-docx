@@ -21,6 +21,7 @@ export class NgDocxComponent implements OnInit {
     sidenavOpened = true;
     docsDir: string = DOCS_FOLDER;
     docs$: Observable<DocumentInterface[]>;
+    section: number = null;
 
     constructor(
         @Inject('config') public config: ConfigInterface,
@@ -33,6 +34,7 @@ export class NgDocxComponent implements OnInit {
         this.docs$.subscribe((docs: DocumentInterface[]) => {
             if (docs.length) {
                 const title = this.getQueryParamTitle();
+                this.section = this.getHashURL();
                 this.markdownName = docs.some((doc) => doc.title === title) ? title : docs[0].title;
                 this.loadMarkdown(this.markdownName);
             }
@@ -44,9 +46,18 @@ export class NgDocxComponent implements OnInit {
         this.fileSystem.loadDocs(this.docsDir, this.config.files);
     }
 
+    getHashURL(): number {
+        return parseInt(window.location.hash.replace('#', ''), 10);
+    }
+
     getQueryParamTitle(): string {
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get('title');
+    }
+
+    markdownChangeFromMenu(markdownName: string) {
+        this.section = null;
+        this.loadMarkdown(markdownName);
     }
 
     loadMarkdown(markdownName: string, searchValue: string = null) {
@@ -63,7 +74,8 @@ export class NgDocxComponent implements OnInit {
     }
 
     writeQueryParam(markdownName: string) {
-        window.history.replaceState(null, null, `${window.location.pathname}?title=${markdownName}`);
+        const hash = this.section ? window.location.hash : '';
+        window.history.replaceState(null, null, `${window.location.pathname}?title=${markdownName}${hash}`);
     }
 
     notifyMarkdownChanges() {
@@ -74,6 +86,27 @@ export class NgDocxComponent implements OnInit {
         if (this.searchValue) {
             this.highlightSearch(this.searchValue);
             this.searchValue = null;
+        }
+    }
+
+    sectionsLoaded() {
+        this.highlightHeader();
+        if (this.section && !Number.isNaN(this.section)) {
+            setTimeout(() => {
+                const positionSection = document.getElementById(this.section.toString())?.getBoundingClientRect().top;
+                this.navigateToPosition(positionSection);
+            });
+        }
+    }
+
+    navigateToPosition(position: number) {
+        const matSidenavContent = document.querySelector('.mat-sidenav-content');
+        const toolbar = document.getElementsByTagName('mat-toolbar')[0];
+        const someSpace = 10;
+
+        if (matSidenavContent) {
+            matSidenavContent.scrollTop =
+                matSidenavContent.scrollTop + position - toolbar.getBoundingClientRect().height - someSpace;
         }
     }
 
@@ -139,13 +172,7 @@ export class NgDocxComponent implements OnInit {
             innerHTML.substring(index + text.length);
         inputText.innerHTML = innerHTML;
         const highlightElement = document.getElementsByClassName('highlight-search')[0];
-        const toolbar = document.getElementsByTagName('mat-toolbar')[0];
-        const someSpace = 20;
-        document.querySelector('.mat-sidenav-content').scrollTop =
-            document.querySelector('.mat-sidenav-content').scrollTop +
-            highlightElement.getBoundingClientRect().top -
-            toolbar.getBoundingClientRect().height -
-            someSpace;
+        this.navigateToPosition(highlightElement.getBoundingClientRect().top);
     }
 
     versionChange(newVersion: string) {
