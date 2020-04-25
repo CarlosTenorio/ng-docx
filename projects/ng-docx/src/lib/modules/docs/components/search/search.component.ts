@@ -1,7 +1,6 @@
 import { Component, HostListener, ViewChild, ElementRef, OnInit, EventEmitter, Output } from '@angular/core';
 import { DocumentInterface } from '../../models';
 import { FileSystemService } from '../../services/file-system/file-system.service';
-import { Observable } from 'rxjs';
 
 @Component({
     selector: 'lib-search',
