@@ -1,6 +1,9 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav [opened]="sidenavOpened" mode="side" opened class="sidenav-left">
-        <lib-navigation-menu [currentFile]="markdownName" (markdownChange)="loadMarkdown($event)"></lib-navigation-menu>
+        <lib-navigation-menu
+            [currentFile]="markdownName"
+            (markdownChange)="markdownChangeFromMenu($event)"
+        ></lib-navigation-menu>
         <hr *ngIf="currentVersion" class="versioning-separator" />
         <lib-versioning
             *ngIf="currentVersion"
@@ -17,7 +20,7 @@
         <markdown [src]="markdown" (ready)="notifyMarkdownChanges()" lineNumbers></markdown>
     </mat-sidenav-content>
     <mat-sidenav class="sidenav-right" opened mode="side" position="end">
-        <lib-navigation-tree (sectionsLoaded)="onScroll()"></lib-navigation-tree>
+        <lib-navigation-tree (sectionsLoaded)="sectionsLoaded()"></lib-navigation-tree>
     </mat-sidenav>
 </mat-sidenav-container>
 <lib-search (navigateToMarkdown)="loadMarkdown($event.title, $event.search)"></lib-search>
