@@ -14,6 +14,8 @@ Welcome to [NG-DOCX](https://ngdocx.herokuapp.com)!
 
 [DEMO](https://ngdocx.herokuapp.com/docs)
 
+![Demo GIF](assets/images/promo_gif.gif)
+
 ## What is Ng-docx?
 
 Ng-docx is a library that automatically generates a documentation page to easily and beautifully view your markdowns
