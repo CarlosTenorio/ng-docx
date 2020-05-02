@@ -1,6 +1,6 @@
 {
     "name": "ng-docx",
-    "version": "0.0.15",
+    "version": "0.1.0",
     "dependencies": {
         "ngx-markdown": "^9.0.0"
     },
@@ -22,6 +22,7 @@
         "documentation",
         "markdown",
         "ng",
-        "library"
+        "library",
+        "dgeni"
     ]
 }
