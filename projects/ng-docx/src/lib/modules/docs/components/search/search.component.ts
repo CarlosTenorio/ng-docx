@@ -46,11 +46,11 @@ export class SearchComponent implements OnInit {
         }
     }
 
-    searchEngine(queryQuery: string, keys: string[]): any[] {
+    searchEngine(query: string, keys: string[]): any[] {
         const results = [];
         this.indexSearch.forEach((item) => {
             keys.forEach((key: string) => {
-                const index = item[key].toLocaleLowerCase().indexOf(queryQuery.toLocaleLowerCase());
+                const index = item[key].toLocaleLowerCase().indexOf(query.toLocaleLowerCase());
                 if (index >= 0) {
                     results.push(item);
                 }
@@ -79,8 +79,7 @@ export class SearchComponent implements OnInit {
     }
 
     navigateTo(title: string) {
-        const search = this.searchValue;
-        this.navigateToMarkdown.emit({ title, search });
+        this.navigateToMarkdown.emit({ title, search: this.searchValue });
         this.closePanel();
     }
 }

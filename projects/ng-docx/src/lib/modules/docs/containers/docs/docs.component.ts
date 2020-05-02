@@ -4,6 +4,7 @@ import { FileSystemService } from './../../services/file-system/file-system.serv
 import { NgDocxService } from './../../services/ng-docx/ng-docx.service';
 import { ConfigInterface, DocumentInterface } from '../../models';
 import { Observable } from 'rxjs';
+import Mark from 'mark.js';
 
 const DOCS_FOLDER = 'assets/docs/';
 
@@ -69,8 +70,8 @@ export class NgDocxComponent implements OnInit {
         this.writeQueryParam(this.markdownName);
         this.searchValue = searchValue;
         if (this.searchValue && this.markdownBefore === this.markdown) {
-            this.unHighlightSearch();
-            this.highlightSearch(this.searchValue);
+            this.unmarkSearch();
+            this.markSearchAndNavigate(this.searchValue);
             this.searchValue = null;
         }
     }
@@ -86,7 +87,7 @@ export class NgDocxComponent implements OnInit {
             document.querySelector('.mat-sidenav-content').scrollTop = 0;
         }
         if (this.searchValue) {
-            this.highlightSearch(this.searchValue);
+            this.markSearchAndNavigate(this.searchValue);
             this.searchValue = null;
         }
     }
@@ -147,34 +148,18 @@ export class NgDocxComponent implements OnInit {
         this.sidenavOpened = !this.sidenavOpened;
     }
 
-    unHighlightSearch() {
-        const className = 'highlight-search';
-        const highlightElements = document.getElementsByClassName(className);
-        const arrhighlightElements = [...(highlightElements as any)];
-        arrhighlightElements.forEach((element) => {
-            element.classList.remove(className);
-        });
+    unmarkSearch() {
+        const context = document.querySelector('markdown');
+        const instance = new Mark(context);
+        instance.unmark();
     }
 
-    highlightSearch(text: string) {
-        const inputText = document.getElementsByTagName('markdown')[0];
-        const innerHTML = inputText.innerHTML;
-        const index = innerHTML.toLocaleLowerCase().indexOf(text.toLocaleLowerCase());
-        if (index >= 0) {
-            this.paintSearchAndScrollTo(text, inputText, innerHTML, index);
-        }
-    }
-
-    paintSearchAndScrollTo(text: string, inputText: Element, innerHTML: string, index: number) {
-        innerHTML =
-            innerHTML.substring(0, index) +
-            "<span class='highlight-search'>" +
-            innerHTML.substring(index, index + text.length) +
-            '</span>' +
-            innerHTML.substring(index + text.length);
-        inputText.innerHTML = innerHTML;
-        const highlightElement = document.getElementsByClassName('highlight-search')[0];
-        this.navigateToPosition(highlightElement.getBoundingClientRect().top);
+    markSearchAndNavigate(text: string) {
+        const context = document.querySelector('markdown');
+        const instance = new Mark(context);
+        instance.mark(text);
+        const markElement = document.querySelector('mark');
+        this.navigateToPosition(markElement.getBoundingClientRect().top);
     }
 
     versionChange(newVersion: string) {
