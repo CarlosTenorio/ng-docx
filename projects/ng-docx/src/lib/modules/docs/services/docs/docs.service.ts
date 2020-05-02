@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
+/**
+ * Internal service.
+ */
 @Injectable({
     providedIn: 'root'
 })

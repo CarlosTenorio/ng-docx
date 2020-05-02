@@ -66,12 +66,12 @@ To make your documentation page you must wrap the NgDocxModule, for this follow 
 
     *docs.module.ts*
     ```typescript
-    const fileNames = ['getting started', 'theming'];
+    const files = ['getting started', 'theming'];
 
     @NgModule({
         imports: [
             NgDocxModule.forRoot({
-                files: fileNames
+                files
             })
         ]
     })

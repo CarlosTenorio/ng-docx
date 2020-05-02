@@ -2,6 +2,8 @@
 
 NG-DOCX works through **angular material**.
 
+By default, the module uses the material theme that you have configured in your application. If you want to add a custom theme, continue reading the next section.
+
 ## Inlude the palette
 
 In your style file you must include the following lines.
