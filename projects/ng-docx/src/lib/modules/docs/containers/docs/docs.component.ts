@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation, Inject, OnInit } from '@angular/core';
 import { DocsService } from './../../services/docs/docs.service';
 import { FileSystemService } from './../../services/file-system/file-system.service';
+import { NgDocxService } from './../../services/ng-docx/ng-docx.service';
 import { ConfigInterface, DocumentInterface } from '../../models';
 import { Observable } from 'rxjs';
 
@@ -25,6 +26,7 @@ export class NgDocxComponent implements OnInit {
 
     constructor(
         @Inject('config') public config: ConfigInterface,
+        public ngDocxService: NgDocxService,
         private docsService: DocsService,
         private fileSystem: FileSystemService
     ) {}

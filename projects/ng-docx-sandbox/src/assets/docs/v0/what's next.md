@@ -2,4 +2,5 @@
 
 - Copy paste on code blocks
 - Copy URL to section
-- Edit button on markdown
+- Multiple themes
+- Generate multiple submenu sections for big documentation pages

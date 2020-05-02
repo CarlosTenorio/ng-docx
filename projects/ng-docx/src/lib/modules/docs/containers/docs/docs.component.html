@@ -17,6 +17,11 @@
         <button mat-icon-button aria-label="menu icon" (click)="switchSidenav()" class="menu-icon">
             <mat-icon>{{ sidenavOpened ? 'menu_open' : 'menu' }}</mat-icon>
         </button>
+        <edit-button
+            *ngIf="config.editAssetsPath && ngDocxService.editEnable$ | async"
+            [path]="config.editAssetsPath + '/' + docsDir + markdownName + '.md'"
+        >
+        </edit-button>
         <markdown [src]="markdown" (ready)="notifyMarkdownChanges()" lineNumbers></markdown>
     </mat-sidenav-content>
     <mat-sidenav class="sidenav-right" opened mode="side" position="end">
