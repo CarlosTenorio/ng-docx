@@ -1,5 +1,5 @@
 import { Component, HostListener, ViewChild, ElementRef, OnInit, EventEmitter, Output } from '@angular/core';
-import { DocumentInterface } from '../../models';
+import { DocumentInterface, DocCollectionInterface } from '../../models';
 import { FileSystemService } from '../../services/file-system/file-system.service';
 
 @Component({
@@ -24,18 +24,24 @@ export class SearchComponent implements OnInit {
     constructor(private fileSystem: FileSystemService) {}
 
     ngOnInit() {
-        this.fileSystem.docs$.subscribe((docs: DocumentInterface[]) => {
-            this.buildIndexSearch(docs);
+        this.fileSystem.docs$.subscribe((docs: DocCollectionInterface) => {
+            if (docs) {
+                this.buildIndexSearch(docs);
+            }
         });
     }
 
-    buildIndexSearch(docs: DocumentInterface[]) {
+    private buildIndexSearch(docs: DocCollectionInterface) {
         this.indexSearch = [];
-        if (docs.length) {
-            docs.forEach((doc: DocumentInterface) => {
-                this.indexSearch.push({ title: doc.title, content: doc.content } as DocumentInterface);
+        Object.keys(docs).forEach((folderName: string) => {
+            docs[folderName].forEach((doc: DocumentInterface) => {
+                this.indexSearch.push({
+                    title: doc.title,
+                    content: doc.content,
+                    folder: doc.folder
+                } as DocumentInterface);
             });
-        }
+        });
     }
 
     search() {
@@ -46,7 +52,7 @@ export class SearchComponent implements OnInit {
         }
     }
 
-    searchEngine(query: string, keys: string[]): any[] {
+    private searchEngine(query: string, keys: string[]): any[] {
         const results = [];
         this.indexSearch.forEach((item) => {
             keys.forEach((key: string) => {
@@ -74,12 +80,15 @@ export class SearchComponent implements OnInit {
         }
     }
 
-    cleanResults() {
+    private cleanResults() {
         this.results = [];
     }
 
-    navigateTo(title: string) {
-        this.navigateToMarkdown.emit({ title, search: this.searchValue });
+    navigateTo(result: DocumentInterface) {
+        this.navigateToMarkdown.emit({
+            title: result.folder ? `${result.folder}/${result.title}` : result.title,
+            search: this.searchValue
+        });
         this.closePanel();
     }
 }

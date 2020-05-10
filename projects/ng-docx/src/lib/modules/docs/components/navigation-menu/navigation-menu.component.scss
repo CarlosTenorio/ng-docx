@@ -18,12 +18,24 @@
         &:first-child {
             margin-top: 20px;
         }
-        &:hover {
-            background-color: #dbdbdb;
-        }
 
         .text {
+            &:hover {
+                background-color: #dbdbdb;
+            }
+            position: relative;
             padding: 8px;
+        }
+        .sub-text {
+            padding-left: 20px;
+            font-size: 14px;
+            text-transform: capitalize;
+        }
+        .arrow-icon {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
         }
     }
 

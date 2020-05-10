@@ -1,5 +1,7 @@
+import { FolderInterface } from './folderInterface';
+
 export interface ConfigInterface {
-    files: string[];
+    files: (string | FolderInterface)[];
     versions?: string[];
     editAssetsPath?: string;
 }

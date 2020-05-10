@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation, Inject, OnInit } from '@angular/core';
 import { DocsService } from './../../services/docs/docs.service';
 import { FileSystemService } from './../../services/file-system/file-system.service';
 import { NgDocxService } from './../../services/ng-docx/ng-docx.service';
-import { ConfigInterface, DocumentInterface } from '../../models';
+import { ConfigInterface, DocCollectionInterface } from '../../models';
 import { Observable } from 'rxjs';
 import Mark from 'mark.js';
 
@@ -16,14 +16,14 @@ const DOCS_FOLDER = 'assets/docs/';
 })
 export class NgDocxComponent implements OnInit {
     currentVersion: string = null;
+    docs$: Observable<DocCollectionInterface>;
+    docsDir: string = DOCS_FOLDER;
     markdownBefore: string = null;
     markdown: string;
     markdownName: string;
     searchValue: string = null;
-    sidenavOpened = true;
-    docsDir: string = DOCS_FOLDER;
-    docs$: Observable<DocumentInterface[]>;
     section: number = null;
+    sidenavOpened = true;
 
     constructor(
         @Inject('config') public config: ConfigInterface,
@@ -34,28 +34,42 @@ export class NgDocxComponent implements OnInit {
 
     ngOnInit() {
         this.docs$ = this.fileSystem.docs$;
-        this.docs$.subscribe((docs: DocumentInterface[]) => {
-            if (docs.length) {
-                const title = this.getQueryParamTitle();
+        this.docs$.subscribe((docs: DocCollectionInterface) => {
+            if (docs) {
+                const markdownName = this.getQueryParamTitle();
+                const folder = markdownName.indexOf('/') !== -1 ? markdownName.split('/')[0] : null;
+                const title = folder ? markdownName.split('/')[1] : markdownName;
                 this.section = this.getHashURL();
-                this.markdownName = docs.some((doc) => doc.title === title) ? title : docs[0].title;
+                this.markdownName = this.docExists(docs, folder, title) ? markdownName : this.getFirstTitle(docs);
                 this.loadMarkdown(this.markdownName);
             }
         });
+        this.checkVersioning();
+        this.fileSystem.loadDocs(this.docsDir, this.config.files);
+    }
+
+    private docExists(docs: DocCollectionInterface, folder: string, title: string): boolean {
+        return docs[folder] ? docs[folder].some((doc) => doc.title === title) : false;
+    }
+
+    private getFirstTitle(docs: DocCollectionInterface): string {
+        return docs[Object.keys(docs)[0]][0].title;
+    }
+
+    private getHashURL(): number {
+        return parseInt(window.location.hash.replace('#', ''), 10);
+    }
+
+    private getQueryParamTitle(): string {
+        const urlParams = new URLSearchParams(window.location.search);
+        return decodeURIComponent(urlParams.get('title'));
+    }
+
+    private checkVersioning() {
         if (this.config.versions) {
             this.currentVersion = this.config.versions[this.config.versions.length - 1];
             this.docsDir = `${DOCS_FOLDER}${this.currentVersion}/`;
         }
-        this.fileSystem.loadDocs(this.docsDir, this.config.files);
-    }
-
-    getHashURL(): number {
-        return parseInt(window.location.hash.replace('#', ''), 10);
-    }
-
-    getQueryParamTitle(): string {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get('title');
     }
 
     markdownChangeFromMenu(markdownName: string) {
@@ -76,9 +90,13 @@ export class NgDocxComponent implements OnInit {
         }
     }
 
-    writeQueryParam(markdownName: string) {
+    private writeQueryParam(markdownName: string) {
         const hash = this.section ? window.location.hash : '';
-        window.history.replaceState(null, null, `${window.location.pathname}?title=${markdownName}${hash}`);
+        window.history.replaceState(
+            null,
+            null,
+            `${window.location.pathname}?title=${encodeURIComponent(markdownName)}${hash}`
+        );
     }
 
     notifyMarkdownChanges() {
@@ -102,7 +120,7 @@ export class NgDocxComponent implements OnInit {
         }
     }
 
-    navigateToPosition(position: number) {
+    private navigateToPosition(position: number) {
         const matSidenavContent = document.querySelector('.mat-sidenav-content');
         const toolbar = document.getElementsByTagName('mat-toolbar')[0];
         const someSpace = 10;
@@ -117,7 +135,7 @@ export class NgDocxComponent implements OnInit {
         this.highlightHeader();
     }
 
-    highlightHeader() {
+    private highlightHeader() {
         const sections = document.getElementsByTagName('section');
         const arrSections = [...(sections as any)];
 
@@ -130,7 +148,7 @@ export class NgDocxComponent implements OnInit {
         });
     }
 
-    hightlightItem(index: number) {
+    private hightlightItem(index: number) {
         const className = 'navigation-item-selected';
         const currentSelected = document.getElementsByClassName(`navigation-item-selected`)[0];
         const item = document.getElementById(`navItem${index}`);
@@ -148,13 +166,13 @@ export class NgDocxComponent implements OnInit {
         this.sidenavOpened = !this.sidenavOpened;
     }
 
-    unmarkSearch() {
+    private unmarkSearch() {
         const context = document.querySelector('markdown');
         const instance = new Mark(context);
         instance.unmark();
     }
 
-    markSearchAndNavigate(text: string) {
+    private markSearchAndNavigate(text: string) {
         const context = document.querySelector('markdown');
         const instance = new Mark(context);
         instance.mark(text);

@@ -1,7 +1,8 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { NgDocxModule, NgDocxComponent } from 'projects/ng-docx/src/public-api';
+# Example
 
+Example of the library documentation itself.
+
+```typescript
 const files = [
     'getting started',
     'writing the markdown',
@@ -31,4 +32,4 @@ const routes: Routes = [
         RouterModule.forChild(routes)
     ]
 })
-export class WrapperDocsModule {}
+```
