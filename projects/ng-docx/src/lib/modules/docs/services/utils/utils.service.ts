@@ -22,4 +22,13 @@ export class UtilsService {
         }
         return siblings;
     }
+
+    groupBy(collection: any, key: string) {
+        return collection.reduce((rv, x) => {
+            if (x) {
+                (rv[x[key]] = rv[x[key]] || []).push(x);
+            }
+            return rv;
+        }, {});
+    }
 }

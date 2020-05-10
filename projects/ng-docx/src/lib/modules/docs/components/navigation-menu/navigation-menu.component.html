@@ -1,12 +1,28 @@
 <div class="item-navigation">
-    <div
-        *ngFor="let doc of docs$ | async"
-        (click)="loadMarkdown(doc.title)"
-        class="files"
-        [class.item-actived]="currentFile === doc.title"
-    >
-        <div class="text">
-            {{ doc.title }}
-        </div>
+    <div *ngFor="let item of navigationMenu$ | async" class="files" [class.item-actived]="isItemActived(item)">
+        <ng-template [ngIf]="item.title" [ngIfElse]="folderTemplate">
+            <div class="text" (click)="loadMarkdown(item.title)">
+                {{ item.title }}
+            </div>
+        </ng-template>
+
+        <ng-template #folderTemplate>
+            <div class="text" (click)="switchOpenFolder(getFolderName(item))">
+                {{ getFolderName(item) }}
+                <mat-icon class="arrow-icon">
+                    {{ openedFolders[getFolderName(item)] ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}
+                </mat-icon>
+            </div>
+            <ng-container *ngIf="openedFolders[getFolderName(item)]">
+                <div
+                    *ngFor="let doc of getDocsFromFolder(item)"
+                    (click)="loadMarkdown(doc.folder + '/' + doc.title)"
+                    class="text sub-text"
+                    [class.item-actived]="isFolderItemActived(getFolderName(item), doc.title)"
+                >
+                    {{ doc.title }}
+                </div>
+            </ng-container>
+        </ng-template>
     </div>
 </div>

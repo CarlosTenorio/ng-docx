@@ -4,5 +4,5 @@
     "lib": {
         "entryFile": "src/public-api.ts"
     },
-    "whitelistedNonPeerDependencies": ["ngx-markdown"]
+    "whitelistedNonPeerDependencies": ["ngx-markdown", "mark.js"]
 }
