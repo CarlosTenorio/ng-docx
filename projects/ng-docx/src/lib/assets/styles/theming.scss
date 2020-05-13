@@ -13,4 +13,10 @@
             }
         }
     }
+
+    .item-navigation {
+        .item-actived {
+            color: $color-primary !important;
+        }
+    }
 }

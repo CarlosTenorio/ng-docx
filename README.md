@@ -14,6 +14,8 @@ Welcome to [NG-DOCX](https://ngdocx.herokuapp.com)!
 
 [DEMO](https://ngdocx.herokuapp.com/docs)
 
+[Stackblitz](https://stackblitz.com/edit/ng-docx-demo)
+
 ![Demo GIF](https://raw.githubusercontent.com/CarlosTenorio/ng-docx/master/projects/ng-docx-sandbox/src/assets/images/promo_gif.gif)
 
 ## What is Ng-docx?
