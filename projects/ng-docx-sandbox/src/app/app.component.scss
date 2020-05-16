@@ -1,5 +1,9 @@
 @import "../../src/assets/styles/variables.scss";
 
+::ng-deep mat-sidenav-container {
+    height: calc(100% - 64px) !important;
+}
+
 .title {
     cursor: pointer;
 }
