@@ -8,13 +8,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {
     NavigationTreeComponent,
     NavigationMenuComponent,
     SearchComponent,
     VersioningComponent,
-    EditButtonComponent
+    EditButtonComponent,
+    SnackBarCopyComponent
 } from './components';
 import { ClickOutsideDirective } from './directives';
 import { NgDocxComponent } from './containers';
@@ -32,7 +34,8 @@ const childRoutes: Route[] = [{ path: '', component: NgDocxComponent }];
         SearchComponent,
         ClickOutsideDirective,
         VersioningComponent,
-        EditButtonComponent
+        EditButtonComponent,
+        SnackBarCopyComponent
     ],
     imports: [
         CommonModule,
@@ -43,11 +46,13 @@ const childRoutes: Route[] = [{ path: '', component: NgDocxComponent }];
         MatInputModule,
         MatFormFieldModule,
         MatSelectModule,
+        MatSnackBarModule,
         FormsModule,
         HttpClientModule,
         MarkdownModule.forRoot({ loader: HttpClient })
     ],
-    providers: [FileSystemService]
+    providers: [FileSystemService],
+    entryComponents: [SnackBarCopyComponent]
 })
 export class NgDocxModule {
     static forRoot(configuration: ConfigInterface): ModuleWithProviders {

@@ -1,7 +1,10 @@
 import { Component, ViewEncapsulation, Inject, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DocsService } from './../../services/docs/docs.service';
 import { FileSystemService } from './../../services/file-system/file-system.service';
 import { NgDocxService } from './../../services/ng-docx/ng-docx.service';
+import { UtilsService } from './../../services/utils/utils.service';
+import { SnackBarCopyComponent } from '../../components';
 import { ConfigInterface, DocCollectionInterface } from '../../models';
 import { Observable } from 'rxjs';
 import Mark from 'mark.js';
@@ -29,7 +32,9 @@ export class NgDocxComponent implements OnInit {
         @Inject('config') public config: ConfigInterface,
         public ngDocxService: NgDocxService,
         private docsService: DocsService,
-        private fileSystem: FileSystemService
+        private utils: UtilsService,
+        private fileSystem: FileSystemService,
+        private snackBar: MatSnackBar
     ) {}
 
     ngOnInit() {
@@ -39,7 +44,7 @@ export class NgDocxComponent implements OnInit {
                 const markdownName = this.getQueryParamTitle();
                 const folder = markdownName.indexOf('/') !== -1 ? markdownName.split('/')[0] : null;
                 const title = folder ? markdownName.split('/')[1] : markdownName;
-                this.section = this.getHashURL();
+                this.section = this.utils.getHashURL();
                 this.markdownName = this.docExists(docs, folder, title) ? markdownName : this.getFirstTitle(docs);
                 this.loadMarkdown(this.markdownName);
             }
@@ -54,10 +59,6 @@ export class NgDocxComponent implements OnInit {
 
     private getFirstTitle(docs: DocCollectionInterface): string {
         return docs[Object.keys(docs)[0]][0].title;
-    }
-
-    private getHashURL(): number {
-        return parseInt(window.location.hash.replace('#', ''), 10);
     }
 
     private getQueryParamTitle(): string {
@@ -118,6 +119,7 @@ export class NgDocxComponent implements OnInit {
                 this.navigateToPosition(positionSection);
             });
         }
+        this.addSectionLinks();
     }
 
     private navigateToPosition(position: number) {
@@ -160,6 +162,34 @@ export class NgDocxComponent implements OnInit {
                 item.classList.add(className);
             }
         }
+    }
+
+    private addSectionLinks() {
+        const sections = document.getElementsByTagName('section');
+        const arrSections = [...(sections as any)];
+
+        arrSections.some((section: HTMLHeadingElement, index: number) => {
+            this.addSectionLink(section, index);
+        });
+    }
+
+    private addSectionLink(section: HTMLHeadingElement, index: number) {
+        const newSectionLink = document.createElement('i');
+        newSectionLink.setAttribute('index', index.toString());
+        newSectionLink.className = 'material-icons ng-docx-section-link';
+        newSectionLink.innerText = 'link';
+        newSectionLink.addEventListener('click', (event: MouseEvent) => {
+            const currentURL = this.utils.getURLWithoutHash();
+            this.utils.copyOnClipboard(`${currentURL}#${(event.target as HTMLHeadingElement).getAttribute('index')}`);
+            this.openSnackBarCopied();
+        });
+        section.childNodes[0].appendChild(newSectionLink);
+    }
+
+    private openSnackBarCopied() {
+        this.snackBar.openFromComponent(SnackBarCopyComponent, {
+            duration: 1000
+        });
     }
 
     switchSidenav() {
