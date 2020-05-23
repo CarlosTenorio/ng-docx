@@ -6,6 +6,25 @@ import { Injectable } from '@angular/core';
 export class UtilsService {
     constructor() {}
 
+    copyOnClipboard(textToCopy: string) {
+        const elSelected = document.createElement('textarea');
+        elSelected.value = textToCopy;
+        document.body.appendChild(elSelected);
+        elSelected.select();
+        document.execCommand('copy');
+        document.body.removeChild(elSelected);
+    }
+
+    getHashURL(): number {
+        return parseInt(window.location.hash.replace('#', ''), 10);
+    }
+
+    getURLWithoutHash(): string {
+        const url = new URL(window.location.toString());
+        url.hash = '';
+        return url.toString();
+    }
+
     nextUntil(elem: Element, selector: string, filter: string = null): Element[] {
         const siblings: Element[] = [];
         elem = elem.nextElementSibling;

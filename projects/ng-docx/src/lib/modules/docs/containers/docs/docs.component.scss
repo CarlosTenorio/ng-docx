@@ -28,6 +28,20 @@ lib-search {
   z-index: 1;
 }
 
+section {
+  &:hover {
+    .ng-docx-section-link {
+      display: initial;
+    }
+  }
+}
+.ng-docx-section-link {
+  color: #6e6e6e;
+  cursor: pointer;
+  display: none;
+  position: absolute;
+}
+
 .sidenav-container {
   position: relative;
   height: 100%;
