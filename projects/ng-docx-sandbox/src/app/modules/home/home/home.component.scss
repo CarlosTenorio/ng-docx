@@ -120,3 +120,21 @@ section#intro {
     }
   }
 }
+
+.github-stars {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  max-width: 920px;
+  margin: 32px auto;
+  img.logo {
+    max-width: 10%;
+  }
+}
+
+.github-badges {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
