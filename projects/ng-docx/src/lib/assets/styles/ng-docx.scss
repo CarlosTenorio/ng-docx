@@ -1,65 +1,67 @@
 @import "~prismjs/themes/prism-okaidia.css";
 @import "~prismjs/plugins/line-numbers/prism-line-numbers.css";
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-weight: 500 !important;
-    line-height: 1.33 !important;
-    margin: 32px 0 24px !important;
-}
+.ng-docx-container {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: 500 !important;
+        line-height: 1.33 !important;
+        margin: 32px 0 24px !important;
+    }
 
-h1 {
-    font-size: 24px;
-}
+    h1 {
+        font-size: 24px;
+    }
 
-h2 {
-    font-size: 22px;
-}
+    h2 {
+        font-size: 22px;
+    }
 
-h3 {
-    font-size: 20px;
-}
+    h3 {
+        font-size: 20px;
+    }
 
-h1:first-child {
-    margin-top: 0 !important;
-}
+    h1:first-child {
+        margin-top: 0 !important;
+    }
 
-h1:after,
-h2:after {
-    content: "";
-    display: block;
-    position: relative;
-    top: 0.33em;
-    border-bottom: 1px solid hsla(0, 0%, 50%, 0.33);
-}
+    h1:after,
+    h2:after {
+        content: "";
+        display: block;
+        position: relative;
+        top: 0.33em;
+        border-bottom: 1px solid hsla(0, 0%, 50%, 0.33);
+    }
 
-blockquote,
-code,
-dl,
-ol,
-p,
-pre {
-    font-size: 14px !important;
-    margin: 1.2em 0 !important;
-    line-height: 1.67 !important;
-    letter-spacing: 0.03rem !important;
-}
+    blockquote,
+    code,
+    dl,
+    ol,
+    p,
+    pre {
+        font-size: 14px !important;
+        margin: 1.2em 0 !important;
+        line-height: 1.67 !important;
+        letter-spacing: 0.03rem !important;
+    }
 
-ul,
-li {
-    margin: 0.5em 0 !important;
-}
+    ul,
+    li {
+        margin: 0.5em 0 !important;
+    }
 
-code .line-numbers-rows {
-    top: -2px !important;
-}
+    code .line-numbers-rows {
+        top: -2px !important;
+    }
 
-blockquote {
-    color: rgba(0, 0, 0, 0.6);
-    padding-left: 1.5em;
-    border-left: 5px solid rgba(0, 0, 0, 0.1);
+    blockquote {
+        color: rgba(0, 0, 0, 0.6);
+        padding-left: 1.5em;
+        border-left: 5px solid rgba(0, 0, 0, 0.1);
+    }
 }
