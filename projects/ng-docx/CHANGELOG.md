@@ -1,8 +1,8 @@
 # 0.3.4 (2020-09-09)
 
-|         |                                                                    |
-|---------|--------------------------------------------------------------------|
-| bug fix | Generic type 'ModuleWithProviders<T>' requires 1 type argument(s). |
+|         |                                                                   |
+|---------|-------------------------------------------------------------------|
+| bug fix | Generic type 'ModuleWithProviders<T>' requires 1 type argument(s) |
 
 # 0.3.2 (2020-05-17)
 
