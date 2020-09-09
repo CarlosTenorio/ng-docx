@@ -55,7 +55,7 @@ const childRoutes: Route[] = [{ path: '', component: NgDocxComponent }];
     entryComponents: [SnackBarCopyComponent]
 })
 export class NgDocxModule {
-    static forRoot(configuration: ConfigInterface): ModuleWithProviders {
+    static forRoot(configuration: ConfigInterface): ModuleWithProviders<Route> {
         return {
             ngModule: NgDocxModule,
             providers: [{ provide: 'config', useValue: configuration }]
