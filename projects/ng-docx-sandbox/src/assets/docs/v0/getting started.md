@@ -27,6 +27,12 @@ Before install the library, install the necessary dependencies to function prope
 
 - [@angular/material](https://www.npmjs.com/package/@angular/material)
 
+## Angular compatibility
+| Angular | @sw/angular-controls |
+|---------|----------------------|
+| 10, 9   | 0.4.x                |
+| 8       | 0.3.x                |
+
 ## Installation
 
 ```
@@ -47,7 +53,10 @@ The styles **from** the **library**:
 *angular.json*
 ```json
 "scripts": [
-    "node_modules/ng-docx/assets/js/ng-docx.js"
+    "node_modules/marked/lib/marked.js",
+    "node_modules/prismjs/prism.js",
+    "node_modules/prismjs/components/prism-typescript.min.js",
+    "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js"
 ]
 ```
 

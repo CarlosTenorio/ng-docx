@@ -207,7 +207,9 @@ export class NgDocxComponent implements OnInit {
         const instance = new Mark(context);
         instance.mark(text);
         const markElement = document.querySelector('mark');
-        this.navigateToPosition(markElement.getBoundingClientRect().top);
+        if (markElement) {
+            this.navigateToPosition(markElement.getBoundingClientRect().top);
+        }
     }
 
     versionChange(newVersion: string) {
