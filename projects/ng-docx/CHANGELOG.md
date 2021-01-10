@@ -1,9 +1,14 @@
+# 0.4.2 (2021-01-10)
+
+|         |                                                                                        |
+|---------|----------------------------------------------------------------------------------------|
+| bug fix | Fix search and syntax highlight on search (Error: getBoundingClientRect of undefined). |
+
 # 0.4.1 (2021-01-10)
 
 |         |                                                                                          |
 |---------|------------------------------------------------------------------------------------------|
 | bug fix | Update README (Added Angular compatibility table and fix imports third party libraries). |
-| bug fix | Fix getBoundingClientRect on search.                                                     |
 
 
 # 0.4.0 (2020-09-10)

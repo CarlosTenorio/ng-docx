@@ -129,7 +129,10 @@ export class NgDocxComponent implements OnInit {
 
         if (matSidenavContent) {
             matSidenavContent.scrollTop =
-                matSidenavContent.scrollTop + position - toolbar.getBoundingClientRect().height - someSpace;
+                matSidenavContent.scrollTop +
+                position -
+                (toolbar ? toolbar.getBoundingClientRect().height : 0) -
+                someSpace;
         }
     }
 
