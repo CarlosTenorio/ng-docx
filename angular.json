@@ -63,7 +63,12 @@
                             "projects/ng-docx-sandbox/src/assets/styles/styles.scss",
                             "projects/ng-docx-sandbox/src/assets/styles/theme.scss"
                         ],
-                        "scripts": ["node_modules/ng-docx/assets/js/ng-docx.js"]
+                        "scripts": [
+                            "node_modules/marked/lib/marked.js",
+                            "node_modules/prismjs/prism.js",
+                            "node_modules/prismjs/components/prism-typescript.min.js",
+                            "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js"
+                        ]
                     },
                     "configurations": {
                         "production": {
