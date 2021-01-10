@@ -31,7 +31,7 @@
         "@angular/router": "~9.0.6",
         "express": "^4.17.1",
         "mark.js": "^8.11.1",
-        "ng-docx": "0.4.0",
+        "ng-docx": "0.4.1",
         "ngx-markdown": "^10.1.1",
         "rxjs": "~6.5.4",
         "tslib": "^1.10.0",
