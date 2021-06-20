@@ -7,9 +7,9 @@
         "tslib": "^2.0.0"
     },
     "peerDependencies": {
-        "@angular/common": "^9.0.7",
-        "@angular/core": "^9.0.7",
-        "@angular/material": "^9.2.0"
+        "@angular/common": "^10.2.5",
+        "@angular/core": "^10.2.5",
+        "@angular/material": "^10.2.7"
     },
     "homepage": "https://ngdocx.herokuapp.com",
     "repository": {
