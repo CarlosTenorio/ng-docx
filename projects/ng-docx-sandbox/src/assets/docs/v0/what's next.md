@@ -1,5 +1,5 @@
 # What's next?
 
-- Copy paste on code blocks
-- Copy URL to section
-- Multiple themes
+-   Copy paste on code blocks
+-   Multiple themes
+-   Update to Angular 11 and 12
