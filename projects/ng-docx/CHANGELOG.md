@@ -1,8 +1,14 @@
+# 1.0.3 (2021-06-29)
+
+|         |                               |
+| ------- | ----------------------------- |
+| bug fix | Fix table styles on markdowns |
+
 # 1.0.2 (2021-06-29)
 
 |         |                                                               |
 | ------- | ------------------------------------------------------------- |
-| feature | Migrate from https://travis-ci.org/ to https://travis-ci.com/ |
+| bug fix | Migrate from https://travis-ci.org/ to https://travis-ci.com/ |
 
 # 1.0.1 (2021-06-29)
 
