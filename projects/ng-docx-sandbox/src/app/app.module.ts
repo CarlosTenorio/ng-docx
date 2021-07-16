@@ -19,7 +19,7 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.js';
         BrowserModule,
         BrowserAnimationsModule,
         CommonModule,
-        RouterModule.forRoot([]),
+        RouterModule.forRoot([], { relativeLinkResolution: 'legacy' }),
         AppRoutingModule,
         MatToolbarModule,
         MatIconModule
