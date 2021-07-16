@@ -31,6 +31,7 @@ Before install the library, install the necessary dependencies to function prope
 
 | Angular | Ng-docx |
 | ------- | ------- |
+| 10      | 1.x.x   |
 | 9       | 0.4.x   |
 | 8       | 0.3.x   |
 

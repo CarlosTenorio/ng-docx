@@ -1,6 +1,6 @@
 {
     "name": "ng-docx",
-    "version": "1.0.3",
+    "version": "2.0.0",
     "dependencies": {
         "ngx-markdown": "^10.1.1",
         "mark.js": "^8.11.1",
