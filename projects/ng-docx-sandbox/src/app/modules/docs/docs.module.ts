@@ -9,7 +9,8 @@ const files = [
     'versioning',
     'edit files',
     { 'menu sections': ['introduction', 'example'] },
-    "what's next"
+    "what's next",
+    'CHANGELOG'
 ];
 const versions = ['v0', 'v1', 'v2'];
 const editAssetsPath = 'https://github.com/CarlosTenorio/ng-docx/edit/master/projects/ng-docx-sandbox/src';

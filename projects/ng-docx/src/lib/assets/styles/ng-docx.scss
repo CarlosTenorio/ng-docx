@@ -76,6 +76,9 @@ ng-docx {
     }
     table th {
         font-weight: 600;
+        &:empty {
+            display: none;
+        }
     }
     table tr:nth-child(2n) {
         background-color: #f6f8fa;
