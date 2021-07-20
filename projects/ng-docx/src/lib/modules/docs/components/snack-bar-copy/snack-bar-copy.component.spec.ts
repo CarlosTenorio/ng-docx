@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SnackBarCopyComponent } from './snack-bar-copy.component';
 
@@ -6,7 +6,7 @@ describe('SnackBarCopyComponent', () => {
     let component: SnackBarCopyComponent;
     let fixture: ComponentFixture<SnackBarCopyComponent>;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [SnackBarCopyComponent]
         }).compileComponents();
