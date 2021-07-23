@@ -10,7 +10,7 @@
         "copy-lib-assets": "cpx 'projects/ng-docx/src/lib/assets/**/' 'dist/ng-docx/assets'",
         "build:lib-watch": "ng build ng-docx --watch",
         "deploy": "ng build ng-docx-sandbox --aot --prod",
-        "deploy-ghpages": "ng deploy --repo=https://github.com/CarlosTenorio/ng-docx.git --name='CarlosTenorio' --email=cartenorioperez@gmail.com --configuration=deploy",
+        "deploy-ghpages": "ng deploy --repo=https://github.com/CarlosTenorio/ng-docx.git --name='CarlosTenorio' --email=cartenorioperez@gmail.com --configuration=production",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
