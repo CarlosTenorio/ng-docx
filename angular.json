@@ -154,6 +154,10 @@
                             "devServerTarget": "ng-docx-sandbox:serve:production"
                         }
                     }
+                },
+                "deploy": {
+                    "builder": "angular-cli-ghpages:deploy",
+                    "options": {}
                 }
             }
         }
@@ -161,5 +165,5 @@
     "cli": {
         "analytics": false
     },
-    "defaultProject": "ng-docx"
+    "defaultProject": "ng-docx-sandbox"
 }
