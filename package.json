@@ -10,6 +10,7 @@
         "copy-lib-assets": "cpx 'projects/ng-docx/src/lib/assets/**/' 'dist/ng-docx/assets'",
         "build:lib-watch": "ng build ng-docx --watch",
         "deploy": "ng build ng-docx-sandbox --aot --prod",
+        "deploy-ghpages": "ng deploy --base-href='/ng-docx/' --repo=https://github.com/CarlosTenorio/ng-docx.git --name='CarlosTenorio' --email=cartenorioperez@gmail.com",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
@@ -39,11 +40,13 @@
         "zone.js": "~0.10.2"
     },
     "devDependencies": {
+        "@angular-devkit/architect": "^0.1201.3",
         "@angular-devkit/build-angular": "~0.1102.14",
         "@angular/language-service": "~11.2.14",
         "@types/jasmine": "~3.6.0",
         "@types/jasminewd2": "~2.0.3",
         "@types/node": "^12.11.1",
+        "angular-cli-ghpages": "^1.0.0-rc.2",
         "codelyzer": "^6.0.0",
         "copy": "^0.3.2",
         "cpx": "1.5.0",
