@@ -9,9 +9,9 @@
 
 # Getting Started
 
-Welcome to [NG-DOCX](https://ngdocx.herokuapp.com)!
+Welcome to [NG-DOCX](https://carlostenorio.github.io/ng-docx/home)!
 
-[DEMO](https://ngdocx.herokuapp.com/docs)
+[DEMO](https://carlostenorio.github.io/ng-docx/docs)
 
 [Stackblitz](https://stackblitz.com/edit/ng-docx-demo)
 
