@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.0 (2021-07-27)
+
+|         |                                                              |
+| ------- | ------------------------------------------------------------ |
+| feature | Update home page URLs. Migration from Heroku to Github Pages |
+
 ## 2.0.0 (2021-07-20)
 
 |         |                                        |

@@ -32,7 +32,7 @@
         "@angular/router": "~11.2.14",
         "express": "^4.17.1",
         "mark.js": "^8.11.1",
-        "ng-docx": "2.0.0",
+        "ng-docx": "2.1.0",
         "ngx-markdown": "^10.1.1",
         "rxjs": "~6.5.4",
         "tslib": "^2.0.0",
