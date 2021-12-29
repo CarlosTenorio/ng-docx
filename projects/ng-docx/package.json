@@ -7,9 +7,9 @@
         "tslib": "^2.0.0"
     },
     "peerDependencies": {
-        "@angular/common": "^~11.2.14",
-        "@angular/core": "^~11.2.14",
-        "@angular/material": "^11.2.13"
+        "@angular/common": "^~12.2.14",
+        "@angular/core": "^~12.2.15",
+        "@angular/material": "^12.2.13"
     },
     "homepage": "https://carlostenorio.github.io/ng-docx",
     "repository": {
