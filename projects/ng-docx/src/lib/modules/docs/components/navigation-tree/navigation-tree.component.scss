@@ -1,4 +1,4 @@
-@import "../../../../assets/styles/variables.scss";
+@import '../../../../../../assets/styles/variables.scss';
 
 .navigationMenu {
     margin-top: 20px;
@@ -9,14 +9,14 @@
         &::before {
             position: absolute;
             border-left: 1px solid #dbdbdb;
-            content: "";
+            content: '';
             left: 20px;
             top: 0;
             bottom: -4px;
         }
 
         &:first-child::after {
-            content: "";
+            content: '';
             display: block;
             height: 1px;
             width: 40%;
@@ -40,7 +40,7 @@
             font-weight: 500;
 
             &::after {
-                content: "";
+                content: '';
                 border-radius: 50%;
                 left: 18px;
                 top: 11px;

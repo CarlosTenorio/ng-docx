@@ -1,85 +1,85 @@
-@import "../../../../assets/styles/variables.scss";
+@import '../../../../../../assets/styles/variables.scss';
 
 ::-webkit-scrollbar {
-  width: 5px;
-  color: red($color: #000000);
+    width: 5px;
+    color: red($color: #000000);
 }
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+    background: #f1f1f1;
 }
 ::-webkit-scrollbar-thumb {
-  background: #888;
+    background: #888;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+    background: #555;
 }
 
 mat-sidenav-content {
-  background-color: white;
-  > div {
-    padding: 30px;
-  }
+    background-color: white;
+    > div {
+        padding: 30px;
+    }
 }
 
 lib-search {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  z-index: 1;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
 }
 
 section {
-  &:hover {
-    .ng-docx-section-link {
-      display: initial;
+    &:hover {
+        .ng-docx-section-link {
+            display: initial;
+        }
     }
-  }
 }
 .ng-docx-section-link {
-  color: #6e6e6e;
-  cursor: pointer;
-  display: none;
-  position: absolute;
+    color: #6e6e6e;
+    cursor: pointer;
+    display: none;
+    position: absolute;
 }
 
 .sidenav-container {
-  position: relative;
-  height: 100%;
-  background: #eee;
-  mat-sidenav {
-    width: 200px;
-    &.sidenav-right {
-      width: 240px;
+    position: relative;
+    height: 100%;
+    background: #eee;
+    mat-sidenav {
+        width: 200px;
+        &.sidenav-right {
+            width: 240px;
+        }
     }
-  }
-  .sidenav-left {
-    box-shadow: 6px 0 6px rgba(0, 0, 0, 0.1);
-  }
+    .sidenav-left {
+        box-shadow: 6px 0 6px rgba(0, 0, 0, 0.1);
+    }
 
-  .mat-drawer-side.mat-drawer-end {
-    border-left: none;
-  }
+    .mat-drawer-side.mat-drawer-end {
+        border-left: none;
+    }
 }
 
 .menu-icon {
-  position: absolute !important;
-  left: -3px;
-  top: -5px;
+    position: absolute !important;
+    left: -3px;
+    top: -5px;
 }
 
 .highlight-search {
-  background-color: yellow;
+    background-color: yellow;
 }
 
 .versioning-separator {
-  margin-right: 8px;
-  margin-left: 8px;
-  border-top: 1px solid #dbdbdb;
+    margin-right: 8px;
+    margin-left: 8px;
+    border-top: 1px solid #dbdbdb;
 }
 
 .versioning {
-  padding: 8px;
-  .mat-form-field {
-    width: 90%;
-  }
+    padding: 8px;
+    .mat-form-field {
+        width: 90%;
+    }
 }

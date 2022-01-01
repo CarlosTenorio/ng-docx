@@ -58,7 +58,15 @@
                         "polyfills": "projects/ng-docx-sandbox/src/polyfills.ts",
                         "tsConfig": "projects/ng-docx-sandbox/tsconfig.app.json",
                         "aot": true,
-                        "assets": ["projects/ng-docx-sandbox/src/favicon.ico", "projects/ng-docx-sandbox/src/assets"],
+                        "assets": [
+                            "projects/ng-docx-sandbox/src/favicon.ico",
+                            {
+                                "glob": "**/*",
+                                "input": "projects/ng-docx-sandbox/src/assets/",
+                                "ignore": ["**/*.scss"],
+                                "output": "/assets/"
+                            }
+                        ],
                         "styles": [
                             "projects/ng-docx-sandbox/src/assets/styles/styles.scss",
                             "projects/ng-docx-sandbox/src/assets/styles/theme.scss"

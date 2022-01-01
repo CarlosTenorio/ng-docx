@@ -1,6 +1,7 @@
+@use '~@angular/material' as mat;
 @mixin ng-docx($primary-palette) {
-    $app-primary: mat-palette($primary-palette);
-    $color-primary: mat-color($app-primary);
+    $app-primary: mat.define-palette($primary-palette);
+    $color-primary: mat.get-color-from-palette($app-primary);
 
     .navigationMenu {
         a {
