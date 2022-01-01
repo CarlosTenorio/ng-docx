@@ -2,9 +2,10 @@
 
 ## 3.0.0 (2022-01-01)
 
-|         |                      |
-| ------- | -------------------- |
-| feature | Update to Angular 12 |
+|                 |                       |
+| --------------- | --------------------- |
+| breaking change | Dropping IE11 Support |
+| feature         | Update to Angular 12  |
 
 ## 2.1.0 (2021-07-27)
 
