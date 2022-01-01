@@ -1,3 +1,23 @@
+# Theming
+
+NG-DOCX works through **angular material**.
+
+By default, the module uses the material theme that you have configured in your application. If you want to add a custom theme, continue reading the next section.
+
+## Inlude the palette
+
+In your style file you must include the following lines.
+
+```css
+@import 'node_modules/ng-docx/assets/styles/theming.scss';
+@include ng-docx($palette-primary);
+```
+
+## Full code example
+
+If you are not familiar with how angular material works we give you a complete example of how to customize your colors.
+
+```css
 @use 'sass:map';
 @use '~@angular/material' as mat;
 @import 'node_modules/ng-docx/assets/styles/theming.scss';
@@ -45,4 +65,6 @@ $app-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 $app-theme: mat.define-light-theme($app-primary, $app-accent);
 
 @include mat.all-component-themes($app-theme);
+// Here we include the mix for ng-docx
 @include ng-docx($palette-primary);
+```

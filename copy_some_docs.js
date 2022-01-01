@@ -1,7 +1,7 @@
 const copy = require('copy');
 const fs = require('fs');
 const distDir = 'dist/ng-docx';
-const lastVersion = 'v2';
+const lastVersion = 'v3';
 
 console.log('Copy README file to dist...');
 copy('README.md', distDir, {}, (_) => {});
