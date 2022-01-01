@@ -1,14 +1,14 @@
 {
     "name": "ng-docx",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "dependencies": {
         "ngx-markdown": "^12.0.1",
         "mark.js": "^8.11.1",
         "tslib": "^2.0.0"
     },
     "peerDependencies": {
-        "@angular/common": "^~12.2.14",
-        "@angular/core": "^~12.2.15",
+        "@angular/common": "^12.2.14",
+        "@angular/core": "^12.2.15",
         "@angular/material": "^12.2.13"
     },
     "homepage": "https://carlostenorio.github.io/ng-docx",
