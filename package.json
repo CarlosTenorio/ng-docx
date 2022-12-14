@@ -30,7 +30,7 @@
         "@angular/platform-browser": "~12.2.15",
         "@angular/platform-browser-dynamic": "~12.2.15",
         "@angular/router": "~12.2.15",
-        "express": "^4.17.1",
+        "express": "^4.17.3",
         "mark.js": "^8.11.1",
         "ng-docx": "3.0.1",
         "ngx-markdown": "^10.1.1",
